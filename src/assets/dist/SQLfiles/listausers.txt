@@ -1,0 +1,5 @@
+ID_usuario,nombre,clave,correo,FO_tipo_usuario
+0000000001,STEFANREPOS,Libertad*,stefiroll16@hotmail.com,1
+0000000002,PEDROPARAMO,Libertad*,stefiroll16@hotmail.com,3
+0000000003,MARCOALOSNSO,Libertad*,stefiroll16@hotmail.com,3
+0000000004,MARGARITACOOL,LibRd*,stefiroll16@hotmail.com,1

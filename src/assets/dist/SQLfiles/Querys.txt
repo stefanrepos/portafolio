@@ -1,0 +1,83 @@
+
+-------------------------------------------------------------------------------------------------------------------------------------
+INSERT INTO categorias(nombre, descripcion, fecha_registro) 
+
+VALUES ('AESTHETIC','VINTAGE','2023-08-18')
+
+-------------------------------------------------------------------------------------------------------------------------------------
+INSERT INTO estilo(nomestilo, tipoestrategia, nvalorestilo, nfechacrea, nomlicencia, nfechlicencia, nvalorlicen, nvalorcargos) 
+
+VALUES ('Clásico','marketing','0','2023-08-01','Libre','2023-08-01','0','0'),
+('Moderno','Alianzas','0','2023-08-01','Libre','2023-08-01','0','0'),
+('Urbano','Desarrollo','0','2023-08-01','Libre','2023-08-01','0','0')
+
+-------------------------------------------------------------------------------------------------------------------------------------
+INSERT INTO canales(nombre, tipo, url) 
+VALUES 
+('Facebook','Red Social','https://www.facebook.com'),
+('Instagram','Red Social','https://www.instagram.com'),
+('Twitter','Red Social','https://www.twitter.com'),
+('YouTube','Plataforma de Video','https://www.youtube.com'),
+('LinkedIn','Red Social Profesional','https://www.linkedin.com'),
+('TikTok','Plataforma de Video','https://www.tiktok.com'),
+('Sitio Web Oficial','Sitio Web','https://www.ejemplo.com'),
+('Google My Business','Directorio Local','https://www.google.com/business'),
+('Amazon','Plataforma de Comercio','https://www.amazon.com'),
+('Mercadolibre','Plataforma de Comercio','https://www.mercadolibre.com.co'),
+('Tienda Física','Canal Presencial','Dirección de la tienda')
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+INSERT INTO soporte(nombre, prioridad, estado, NfecIniEvento, NfechfinEvento) 
+
+VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]','[value-7]')
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+
+INSERT INTO tipousuario(nombre, estado, accesos) 
+
+VALUES 
+
+('VISITANTE','ACTIVO','CONSULTA'),
+('USUARIO','ACTIVO','CONSULTA'),
+('ARTISTA','ACTIVO','MODIFICACION'),
+('SUPERUSER','ACTIVO','ADMINISTRACION'),
+('SOPORTE','ACTIVO','ADMINISTRACION')
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+INSERT INTO usuarios(nombre, apellido, clave, correo, rol, fecha_registro, fecha_ultimo_Registro) 
+VALUES 
+('STEFANIA','CORONELL',SHA1('12345'),'STEFAN@GMAIL.COM','ARTISTA','ADMINISTRADOR','2023-08-01','2023-08-17')
+-------------------------------------------------------------------------------------------------------------------------------------
+
+INSERT INTO suscripcion(nombre, referencia, correo, clave, tipo, estado, precio, fecha_inicio, duracion, fecha_fin) 
+
+VALUES 
+
+('FREMIUM','SOL152548','STEFAN@GMAIL.COM',SHA1('12456'),'FREEMIUM','ACTIVO','80000','2023-08-01','30','2023-12-01')
+-------------------------------------------------------------------------------------------------------------------------------------
+INSERT INTO suscripcion(nombre, referencia, correo, clave, tipo, estado, precio, fecha_inicio, duracion, fecha_fin) 
+VALUES 
+('SUSCRIPCION','SUSC12345','STEFAN@GMAIL.COM','FREEMIUM','ACTIVO','80000','2023-08-01','30','2023-12-01')
+
+----------------------------------------------------------------------------------------------------------
+
+INSERT INTO soporte(fecha_creacion, numero, prioridad, Cliente, contacto, estado, asignacion, categoría, plazo_solucion, fecha_actualizacion, fecha_cierre, origen) 
+
+
+VALUES ('2023-08-01','SOP4501,'alta','STEFANIAREPOS','STEFAN@HOTMAIL.COM','ACTIVO','SOPORTESAT','CONSULTA SERVICIOS','2','2023-08-02','2023-08-04','ARTISTA')
+----------------------------------------------------------------------------------------------------------
+
+INSERT INTO reportes(fecha_creacion, fecha_actualizacion, autor, tipologia, cliente, periodo, estado, enlaces) 
+
+VALUES ('2023-08-01','2023-08-01','ADMIN','ANALISIS DATOS','STEFANREPOS','ANUAL','PENDIENTE','REPORTE.PDF')
+
+----------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------
+
+INSERT INTO cliente(fecha_creacion, fecha_actualizacion, nombre_cliente, correo, clave, contacto, descripcion_rol, actividad_econo) 
+VALUES ('2023-08-01','2023-08-01','STEFANREPOS','STEFAN@GMAIL.COM',SHA1('12345'),'3132537654','ARTISTA','1391')
