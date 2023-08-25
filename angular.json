@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "portafolio": {
+    "bkportafolio": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -27,7 +27,7 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets/dist/js/bootstrap.bundle.min.js"
+              "src/assets"
             ],
             "styles": [
               "src/styles.scss",
@@ -64,13 +64,12 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
-          
           "configurations": {
             "production": {
-              "browserTarget": "portafolio:build:production"
+              "browserTarget": "bkportafolio:build:production"
             },
             "development": {
-              "browserTarget": "portafolio:build:development"
+              "browserTarget": "bkportafolio:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -78,7 +77,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "portafolio:build"
+            "browserTarget": "bkportafolio:build"
           }
         },
         "test": {
@@ -95,9 +94,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/assets/dist/css/bootstrap.min.css",
-              "src/assets/dist/css/dashboard.css"
-
+              "src/styles.scss",
+              "src/assets/dist/css/bootstrap.min.css"
             ],
             "scripts": []
           }
@@ -106,6 +104,6 @@
     }
   },
   "cli": {
-    "analytics": "85205b30-c71d-48e0-b445-8070087d1daf"
+    "analytics": "39aab48b-8569-4d19-92f3-4a6318b83cce"
   }
 }

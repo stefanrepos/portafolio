@@ -8,7 +8,7 @@ $control = $_GET['control'];
 $obj = new prueba ($conexion);
 
 switch($control){
-    case 'prueba':
+    case 'consulta':        // variable de consulta 
         $datos = $obj ->consultar();    
     break;
 

@@ -1,20 +1,26 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PrincipalComponent } from './modulos/principal.component';
 import { DashboardComponent } from './modulos/dashboard/dashboard.component';
 import { LoginComponent } from './modulos/login/login.component';
-  
-// Define las rutas
+
 const routes: Routes = [
   {
     path: '', component: PrincipalComponent,
-    children: [ 
-  { path: 'dasboard', component: DashboardComponent },     // Ruta raíz (página de inicio)
+    children: [
+      { path: 'dashboard', component: DashboardComponent },
+
     ]
   },
-{ path: 'login', component: LoginComponent}, // Ruta para la página "Contacto"}
+  { path: 'login', component: LoginComponent },
+
 ];
-// const routes: Routes = [];
+
+
+
+
+
+//const routes: Routes = [];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

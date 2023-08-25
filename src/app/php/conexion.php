@@ -4,10 +4,16 @@
 $servidor = "localhost";
 $usuario  = "root";
 $clave = "";
-$bd = "portafolio";
+$bd = "bkeaportafolio";
 
-$conexion = mysqli_connect($servidor, $usuario, $clave) or die("no se pudo conectar a mysql");
-mysqli_select_db($conexion,$bd) or die("no se pudo conectar a la base de datos");
+// Crear una conexión
+$conexion = new mysqli($servidor, $usuario, $clave, $bd);
 
+// Verificar la conexión
+if ($conexion->connect_error) {
+    die("Conexión fallida: " . $conexion->connect_error);
+}
+
+echo "Conexión exitosa a la base de datos";
 
 ?>

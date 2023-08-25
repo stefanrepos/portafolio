@@ -9,7 +9,7 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 // contains the database connection information//
 require("/xampp/htdocs/portafolio/src/app/php/conexion.php");
 //query to select all the users from the `usuarios` table. The results of the query are stored in a variable called `$res`//
-$con = "SELECT * FROM usuarios ORDER BY nombre";
+$con = "SELECT * FROM usuario ORDER BY nombre";
 $res = mysqli_query($conexion, $con) or die('no consulta de usuario');
 //stores each row in an array called `$vec`//
 $vec = [];
