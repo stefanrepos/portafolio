@@ -16,7 +16,7 @@ $editar = "UPDATE bkusuario SET nombre = '$params->nombre',usuario=$params->usua
    
 mysqli_query($conexion, $editar) or die("no edito");
 
-class Result{}
+class Result{};
 
 $response = new Result();
 $response->resultado = 'OK';

@@ -11,6 +11,16 @@ import { HeaderComponent } from './estructura/header/header.component';
 import { FooterComponent } from './estructura/footer/footer.component';
 import { NavComponent } from './estructura/nav/nav.component';
 import { DashboardComponent } from './modulos/dashboard/dashboard.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { SidebarComponent } from './estructura/sidebar/sidebar.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
 
 
 @NgModule({
@@ -20,13 +30,23 @@ import { DashboardComponent } from './modulos/dashboard/dashboard.component';
     HeaderComponent,
     FooterComponent,
     NavComponent,
-    DashboardComponent
+    DashboardComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatGridListModule,
+    MatCardModule,
+    MatMenuModule,
+    MatIconModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule
     
  
   ],
