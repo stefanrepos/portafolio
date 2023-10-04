@@ -1,0 +1,33 @@
+.fixed-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.logo {
+  height: 60px; /* Ajusta el tamaño del logo según tus necesidades */
+  margin-right: 20px; /* Espacio entre el logo y la navegación */
+}
+
+.nav-list {
+  display: flex; /* Utiliza flexbox para alinear elementos horizontalmente */
+  justify-content: center; /* Centra los elementos horizontalmente */
+  margin-left: auto; /* Mueve la navegación al extremo derecho verticalmente (si es necesario) */
+}
+.icon-button {
+  margin-left: 10px; /* Espacio entre los botones de icono */
+}
+
+@media (max-width: 768px) {
+  /* Oculta el logo en pantallas pequeñas */
+  .logo {
+    display: none;
+  }
+}

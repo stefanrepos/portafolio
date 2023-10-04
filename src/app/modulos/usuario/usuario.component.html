@@ -1,0 +1,67 @@
+
+<h1>Menu usuario</h1>
+<!--1. crear la tabla responsive 
+2. crear el formulario 
+3. asignar los elementos html 
+4. Asignar las funciones logicas para  insertar usuario : mostrar (1) cancelar: ocultar (0) un elemento HTML formulario -->
+<button class="btn btn-primary" (click)="mostrar(1)">Insertar Usuario</button><br><br> 
+
+<div id="formulario" *ngIf="verf==true">
+    <div class="row">
+        <div class="col-lg-6">
+             <input type="text" id="nombre" class="form-control"  [(ngModel)]="user.nombre">
+        </div>
+        <div class="col-lg-6">
+            <input type="email" id="usuario" class="form-control" [(ngModel)]="user.usuario">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+        <input type="password" id="clave" class="form-control" [(ngModel)]="user.clave">
+        </div>
+        <div class="col-lg-6">
+            <select id="tipo" class="form-control" [(ngModel)]="user.tipo">
+                <option value="Administrador" label="Administrador">Administrador</option>
+                <option value="General" label="General">General</option>
+            </select>
+        </div>  
+    </div>
+
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-3">
+            <button class="btn btn-primary" (click)="ingresar()">Guardar</button>
+        </div>
+        <div class="col-lg-3">
+            <button class="btn btn-secondary" (click)="mostrar(0)">Cancelar</button>
+        </div>
+        
+    </div>
+    
+</div>
+
+<br>
+<br>
+
+<div class="table-responsive">
+    <table class="table table-hover">
+        <tr>
+            <th>Nombre</th>
+            <th>Usuario</th>
+            <th>tipo</th>
+            <th>Acciones</th>
+        </tr>
+     <!--    //mostrar usuarios //  -->
+        <tr *ngFor="let item of usuario">
+                <td>{{item.nombre}}</td>       
+                <td>{{item.usuario}}</td>   
+                <td>{{item.tipo}}</td>   
+                <td>Editar-Eliminar </td>
+         </tr>
+       
+
+    </table>
+
+
+
+</div>

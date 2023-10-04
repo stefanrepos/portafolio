@@ -1,0 +1,30 @@
+
+.custom-style {
+  background-color: #3498db;
+  color: white;
+  text-align: center;
+  display: flex;
+  justify-content: center; /* Centro horizontalmente */
+  align-items: center; /* Centro verticalmente */
+  padding: 20px; /* Espacio interior */
+ 
+ 
+}
+
+.icon-button {
+  margin-left: 50px; /* Espacio entre los botones de icono */
+  font-size: 40px; /* Tamaño del icono */
+}
+
+/* FIN Estilos Generales*/
+
+.marco{
+
+  position: abosolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+  background-color: whitesmoke;
+}
+

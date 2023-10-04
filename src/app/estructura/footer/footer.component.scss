@@ -1,8 +1,29 @@
-.bottom-grid-list {
-    position: fixed;
-    bottom: 0;
-    left: 0; /* Opcional: ajusta el margen izquierdo según tus necesidades */
-    right: 0; /* Opcional: ajusta el margen derecho según tus necesidades */
-    background-color: #fff; /* Fondo del mat-grid-list */
-    /* Añade otros estilos según tus preferencias */
+
+
+  .fixed-footer {
+    position: fixed; /* Fija el footer en su posición */
+    bottom: 0; /* Fija el footer en la parte inferior de la ventana */
+    left: 0; /* Alinea el footer a la izquierda */
+    right: 0; /* Alinea el footer a la derecha */
+    width: 100%; /* El footer ocupa todo el ancho disponible */
+    height: 50px; /* Altura del footer (ajusta según sea necesario) */
+    background-color: #333333; /* Color de fondo del footer */
+    color: #fff; /* Color del texto del footer */
+    text-align: center; /* Alinea el texto al centro del footer */
+    padding: 0; /* Espacio interno alrededor del contenido del footer */
+    z-index: 1000; /* Z-index para controlar la superposición con otros elementos */
+    max-width: 100%; /* Limita el ancho máximo al 100% del ancho de la ventana */
+    font-size: 14px; /* Tamaño de fuente deseado */
+    display: flex; /* Cambia el diseño a flex para dispositivos más pequeños */
+    flex-direction: column; /* Cambia la dirección del flex a vertical */
+    box-shadow: 0px -5px 5px #808080; /* Sombra en la parte superior para resaltar */
+    box-sizing: border-box;
+
+  }
+
+  @media (max-width: 768px) {
+    .fixed-footer {
+      font-size: 12px; /* Tamaño de fuente más pequeño para dispositivos más pequeños */
+      /* Otras propiedades CSS específicas para pantallas pequeñas */
+    }
   }

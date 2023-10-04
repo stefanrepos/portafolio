@@ -1,0 +1,55 @@
+ <mat-card-content class="dashboard-card-content">
+          <!-- Agregar contenido dinámico a partir de card.content -->
+          <div *ngIf="card.content">
+            <img src="{{ card.content.thumbnail }}" alt="Miniatura del Usuario" />
+          </div>
+
+          <div *ngIf="card.content">
+            
+           <!-- FORMATO DEL CONTENIDO -->
+              
+            <div>
+              <div class="cards">
+                    <div class="card"><mat-icon>person</mat-icon>
+                      <strong>Nombre:</strong> {{ card.content.name }}</div>
+                    <div class="card"><mat-icon>email</mat-icon>
+                      <strong>Correo Electrónico:</strong> {{ card.content.email }}</div>
+                    <div class="card">THREE</div>
+                    <div class="card">FOUR</div>
+                    <div class="card">FIVE</div>
+                    <div class="card">SIX</div>
+              </div>
+            </div>
+          </div>
+           
+        </mat-card-content>
+        
+        
+        
+        
+        <div *ngIf="card.content && card.title === 'Proyectos'">
+	              <div class="table-container">
+	                <br>
+	                <strong>Lista de Proyectos</strong>
+	              
+	                <table class="responsive-table">
+	                  <thead>
+	                    <tr>
+	                      <th>Número</th>
+	                      <th>Nombre</th>
+	                    </tr>
+	                  </thead>
+	                  <tbody>
+	                    <!-- Utiliza *ngFor para iterar a través de los elementos de las matrices -->
+	                    <ng-container *ngFor="let number of card.content.number; let i = index">
+	                      <tr>
+	                        <td>{{ number }}</td>
+	                        <!-- Añadir una comprobación para asegurarse de que el índice existe en dataName -->
+	                        <td *ngIf="card.content.dataName && card.content.dataName[i]">{{ card.content.dataName[i] }}</td>
+	                      </tr>
+	                    </ng-container>
+	                  </tbody>
+	                </table>
+	              </div>
+	            </div>  
+	            </div>  

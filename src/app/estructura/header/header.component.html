@@ -1,33 +1,22 @@
-<header >
-    <div class="px-3 py-2 text-bg-dark position-sticky">
-      <div class="container">
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-          <a class="navbar-brand col-md-3 col-lg-2 me-0 px-4 fs-6 text-white"href="/">
-            <i src="src/assets/dist/img/Logo_AS.png"> </i>
-            Artivo Soluciones</a>
+<mat-toolbar color="primary" class="fixed-header">
+  <!-- Logo (oculto en pantallas pequeñas) -->
+  <a *ngIf="showLogo" class="logo-link">
+   <img src="../../../assets/dist/img/as-log.png" class="logo-link" width="80">
+  </a>
 
-          <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
-            <li>
-              <a href="#" class="nav-link text-white">
-                <i class="fa fa-user-circle" aria-hidden="true"></i> Personas
-              </a>
-            </li>
-            <li>
-              <a href="#" class="nav-link text-white">
-                <i class="fa fa-user-circle" aria-hidden="true"></i> &nbsp; Empresas
-              </a>
-            </li>
-            <li>
-              <a href="#" class="nav-link text-white">
-                <i class="fa fa-pencil fa-fw" aria-hidden="true"></i>&nbsp;
-                Contacto
-              </a>
-            </li>
-
-
-          </ul>
-        </div>
-      </div>
-    </div>
+  <!-- Barra de navegación -->
+  <mat-nav-list class="nav-list">
    
-  </header>
+    <!-- Agregar más elementos de navegación según sea necesario -->
+  </mat-nav-list>
+
+  <!-- Icono de Cierre de Sesión -->
+  <button mat-icon-button (click)="logout()" class="icon-button">
+    <mat-icon>exit_to_app</mat-icon>
+  </button>
+
+  <!-- Icono de Configuración -->
+  <button mat-icon-button (click)="openSettings()" class="icon-button">
+    <mat-icon>settings</mat-icon>
+  </button>
+</mat-toolbar>
