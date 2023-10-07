@@ -1,3 +1,4 @@
+import { PortafoliosService } from 'src/app/servicios/portafolios.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -5,44 +6,40 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './portafolios.component.html',
   styleUrls: ['./portafolios.component.scss']
 })
-export class PortafoliosComponent {
-  data: any[] = [
-    // Aquí puedes agregar objetos con datos iniciales si lo deseas
-    {
-      creador: 'Usuario 1',
-      nombre: 'Proyecto 1',
-      descripcion: 'Descripción 1',
-      tipo: 'Tipo 1',
-      estado: 'Activo',
-      archivo: 'Archivo 1',
-      fechaCreacion: '2023-01-01',
-      servicios: 'Servicio 1',
-      canales: 'Canal 1',
-      suscripcion: 'Pendiente'
-    },
-    // Agrega más objetos según sea necesario
-  ];
+export class PortafoliosComponent implements OnInit{
 
-  agregar() {
-    // Agrega una nueva fila a los datos
-    this.data.push({});
+  // definir las variables 
+  verf = false;
+  listaPortafolio: any;
+  
+  constructor(private sportafolio:PortafoliosService) { }
+
+  ngOnInit(): void {
+    this.consultap();
+    console.log("En este instante el componente ha cargado");
   }
 
-  editar(item: any) {
-    // Implementa la lógica para editar una fila
-    // Puedes abrir un diálogo de edición o realizar cualquier acción que necesites
-    console.log('Editar', item);
-  }
-
-  eliminar(item: any) {
-    // Implementa la lógica para eliminar una fila
-    // Puedes confirmar la eliminación con un cuadro de diálogo y luego eliminar el elemento del arreglo
-    const confirmar = window.confirm('¿Estás seguro de que deseas eliminar este elemento?');
-    if (confirmar) {
-      const index = this.data.indexOf(item);
-      if (index !== -1) {
-        this.data.splice(index, 1);
-      }
+  //Funcionalidad del boton - mostrar el formulario recibe un dato , si es cero se oculta si es 1 no debe ocultarse//
+  mostrar(dato: any) {
+    switch (dato) {
+      case 0:
+        this.verf = false;
+        break;
+      case 1:
+        this.verf = true;
+        break;
     }
+    
   }
+
+  // Funcionalidad de la base de datos desde el servicio USER // 
+  consultap() {
+    this.sportafolio.consultar().subscribe((result: any) =>  {// subscribe  para cargar en tiempo real 
+      this.listaPortafolio = result;
+      console.log(this.listaPortafolio);//
+      console.log("Se ha cargado el ARRAY correctamente");
+    })
+
+  }
+  
 }

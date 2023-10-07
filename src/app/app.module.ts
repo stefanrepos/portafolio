@@ -26,7 +26,6 @@ import { SoporteComponent } from './modulos/soporte/soporte.component';
 import { UsuarioComponent } from './modulos/usuario/usuario.component';
 import { PruebaComponent } from './modulos/prueba/prueba.component';
 import { PortafoliosComponent } from './modulos/portafolios/portafolios.component';
-import { SuscribirseComponent } from './suscribirse/suscribirse.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
@@ -41,12 +40,11 @@ import { MatRadioModule } from '@angular/material/radio';
     NavComponent,
     DashboardComponent,
     SidebarComponent,
-    SuscripcionesComponent,
     SoporteComponent,
     UsuarioComponent,
     PruebaComponent,
     PortafoliosComponent,
-    SuscribirseComponent,
+    SuscripcionesComponent
 
   ],
   imports: [
