@@ -1,0 +1,55 @@
+<h1>SALENT ESTA FUNCIONANDO</h1>
+<div>
+    <strong>En este modulo se encuentra la documentacion obtenedida durante el proyecto de desarrollo de la aplicación web Portafolio</strong>
+</div>
+
+<div>
+    <span>Analisis de Requisitos</span>
+</div>
+
+<div>
+    <div class="container">
+        <br>
+        <h1>Requisitos por interesados</h1>
+        <div class="btn-group" role="group">
+            <button class="btn btn-primary btn-sm" (click)="mostrar(1)">Mostrar</button>
+            <button class="btn btn-secondary btn-sm" (click)="ocultar()">Ocultar</button>
+        </div>
+        <br>
+        <br>
+        <div class="table-responsive" *ngIf="verf">
+            <table class="table table-hover table-striped">
+            <thead class="thead-dark">
+            <tr>
+                <th>numero</th>
+                <th>referal</th>
+                <th>grupo</th>
+                <th>rol</th>
+                <th>funcionalidad</th>
+                <th>descripcion</th>
+                <th>prioridad</th>
+                <th>cumple</th>
+                <th>no_cumple</th>
+                                
+            </tr>
+            </thead>
+            <tr *ngFor="let item of interesados">
+                <td>{{item.numero}}</td>
+                <td>{{item.referal}}</td> 
+                <td>{{item.grupo}}</td>
+                <td>{{item.rol}}</td> 
+                <td>{{item.funcionalidad}}</td>
+                <td>{{item.descripcion}}</td>
+                <td>{{item.prioridad}}</td> 
+                <td>{{item.cumple}}</td>
+                <td>{{item.no_cumple}}</td> 
+
+            </tr>
+            </table>
+
+        </div>
+
+    </div>
+
+    
+</div>
