@@ -1,110 +1,65 @@
-<h1>Menu Portafolios</h1>
-
-
-<div class="mat-toolbar custom-style">
-    <button mat-icon-button class="icon-button">
-        <mat-icon>create</mat-icon>
-    </button>
-
-    <button mat-icon-button class="icon-button">
-        <mat-icon>notifications</mat-icon>
-    </button>
-
-    <button mat-icon-button class="icon-button">
-        <mat-icon>settings</mat-icon>
-    </button>
-
-    <button mat-icon-button class="icon-button">
-        <mat-icon>help</mat-icon>
-    </button>
-
-    <button mat-icon-button class="icon-button">
-        <mat-icon>search</mat-icon>
-    </button>
-
-</div>
-
+<button class="btn btn-primary" (click)="mostrar(1)">Agregar portafolio</button><br><br> 
 <br>
-<br>
-<div>
-    <div class="d-inline-flex p-3 text-white">
-        <div class="row">
-            <div class="col-md-3">
-                <div class="card">
-                    <img src="../../../assets/dist/img/Cuadro_gris.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Proyecto1</h5>
-                        <p class="card-text">Este es un texto de ejemplo para contener la descripción del proyecto</p>
-                        <a href="#" class="btn btn-primary">Editar</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card">
-                    <img src="../../../assets/dist/img/Cuadro_gris.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Proyecto2</h5>
-                        <p class="card-text">Este es otro texto de ejemplo para contener la descripción del proyecto</p>
-                        <a href="#" class="btn btn-primary">Editar</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card">
-                    <img src="../../../assets/dist/img/Cuadro_gris.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Proyecto3</h5>
-                        <p class="card-text">Este es un tercer ejemplo de texto para la descripción del proyecto</p>
-                        <a href="#" class="btn btn-primary">Editar</a>
-                    </div>
-                </div>
-            </div>
+<div class="container" id="formulario" *ngIf="verf == true">
+   <div class="row">
+      <div class="col-lg-6 align-items-center">
+         <input type="text" id="nombre" class="form-control" [(ngModel)]="uportafolio.nombre" placeholder="Nombre de portafolio ">
+         <span style="color: brown;" *ngIf="validanombre == false">Nombre</span>
+      </div>
+      <div class="col-lg-6">
+         <select id="descripcion" class="form-select" [(ngModel)]="uportafolio.descripcion" placeholder="seleccione">
+            <option value="Artes y patrimonio" label="Artes y patrimonio">Artes y patrimonio</option>
+            <option value="Industria Cultural" label="Industria Cultural">Industria Cultural</option>
+            <option value="Creacion Funcional" label="Creacion Funcional">Empresas</option>
+            </select>     
+   
+         <span style="color: brown;" *ngIf="validadescripcion == false">Insertar descripcion</span>
+      </div>
 
-            <div class="col-md-3">
-                <div class="card">
-                    <img src="../../../assets/dist/img/Cuadro_gris.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Proyecto3</h5>
-                        <p class="card-text">Este es un tercer ejemplo de texto para la descripción del proyecto</p>
-                        <a href="#" class="btn btn-primary">Editar</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+      <div class="col-lg-6">
+         <select id="tipo" class="form-select" [(ngModel)]="uportafolio.tipo" placeholder="seleccione">
+         <option value="Profesional" label="Profesional">Profesional</option>
+         <option value="Organizaciones" label="Organizaciones">Organizaciones</option>
+         <option value="Empresas" label="Empresas">Empresas</option>
+         <option value="Emprendimiento" label="Emprendimiento">Emprendimiento</option>
+         </select>     
 
+         <span style="color: brown;" *ngIf="validatipo == false">Insertar tipo</span>
+      </div>
+      <div class="col-lg-6">
 
-    <br>
-    <br>
-    <button id="agregarFila" class="btn btn-success">Agregar Fila</button>
-    <br>
-    <br>
+         <select id="estado" class="form-select" [(ngModel)]="uportafolio.estado" placeholder="seleccione">
+         <option value="Activar" label="Activar">activo</option>
+         <option value="Desactivar" label="Desactivar">inactivo</option>
+         </select>
 
-    <div><button class="btn btn-primary" (click)="consultap()">Cargar</button></div>
-    <br>
-
-    <div class="table-responsive">
-      <table class= "table table-hover">
-          <tr>
-            <th>Creador</th>
-            <th>Nombre</th>
-            <th>Descripción</th>
-            <th>Tipo</th>
-            <th>Estado</th>
-            <th>Archivo</th>
-          </tr>
-          <tr *ngFor="let item of listaPortafolio">
-            <td>{{item.creador}}</td>
-            <td>{{item.nombre}}</td> 
-            <td>{{item.descripcion}}</td>
-            <td>{{item.tipo}}</td>
-            <td>{{item.estado}}</td>
-            <td>{{item.archivo}}</td>
-          </tr>
-            
-      </table>
-
-    </div>
-
+         <span style="color: brown;" *ngIf="validatipo == false">Insertar tipo</span>
+      </div>
+      <div class="col-lg-12">
+         <button *ngIf="beditar == false" class="btn btn-primary" (click)="ingresar()">Guardar</button>
+         <button *ngIf="beditar == true" class="btn btn-primary" (click)="editar()">Editar</button>
+         <button class="btn btn-secondary" (click)="mostrar(0)">Cancelar</button>
+      </div>
+   </div>
 </div>
-                
+<br> 
+
+
+<div class="container card">
+   <div class="row">
+     <div class="col-md-4 col-sm-6 col-12" *ngFor="let item of portafolio">
+       <div class="card mb-3">
+         <div class="card-body">
+           <h5 class="card-title">{{ item.nombre }}</h5>
+           <p class="card-text">Creador: {{ item.creador }}</p>
+           <p class="card-text">Descripción: {{ item.descripcion }}</p>
+           <p class="card-text">Tipo: {{ item.tipo }}</p>
+           <p class="card-text">Estado: {{ item.estado }}</p>
+           <a (click)="cargarDatos(item, item.id_portafolio)" class="btn btn-primary">Editar</a>
+           <a (click)="preguntar(item.id_portafolio, item.nombre)" class="btn btn-danger">Eliminar</a>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+ 

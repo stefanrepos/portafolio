@@ -29,6 +29,8 @@ import { PortafoliosComponent } from './modulos/portafolios/portafolios.componen
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
+import { SalentComponent } from './modulos/proyecto/salent/salent.component';
+import { LoginComponent } from './modulos/login/login.component';
 
 
 @NgModule({
@@ -44,13 +46,16 @@ import { MatRadioModule } from '@angular/material/radio';
     UsuarioComponent,
     PruebaComponent,
     PortafoliosComponent,
-    SuscripcionesComponent
+    SuscripcionesComponent,
+    SalentComponent,
+    LoginComponent,
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
     MatGridListModule,
@@ -65,9 +70,7 @@ import { MatRadioModule } from '@angular/material/radio';
     MatSelectModule,
     MatRadioModule,
     ReactiveFormsModule,
-
- 
-    
+   
  
   ],
   providers: [],

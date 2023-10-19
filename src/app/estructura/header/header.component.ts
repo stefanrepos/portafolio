@@ -25,6 +25,12 @@ export class HeaderComponent {
   openSettings() {
     // Aquí puedes agregar la lógica para abrir la página de configuración
     // Por ejemplo, navegar a una ruta de configuración específica
-    this.router.navigate(['/configuracion']);
+    this.router.navigate(['/usuario']);
   }
+
+  goHome() {
+    this.router.navigate(['/dashboard'])
+  }
+
+
 }

@@ -8,7 +8,7 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 // contains the database connection information//
 require("../conexion.php");
 //query to select all the users from the `usuarios` table. The results of the query are stored in a variable called `$res`//
-$con = "SELECT * FROM suscripcion ORDER BY nombre";
+$con = "SELECT * FROM servicios ORDER BY nombre";
 $res = mysqli_query($conexion, $con) or die('no consulta de suscripcion');
 //stores each row in an array called `$vec`//
 $vec = [];
@@ -18,8 +18,8 @@ while ($reg = mysqli_fetch_array($res))
 }
 
 //then encodes the array as JSON and sends it back to the client
-$cad =json_encode($vec);
-echo $cad;
-//the response is in JSON format.
+$response =json_encode($vec);
 header('Content-Type:application/json');
+echo $response;
+//the response is in JSON format.
 ?>

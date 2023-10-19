@@ -1,1 +1,185 @@
-<p>suscripciones works!</p>
+<!--  este modulo fue rediseñado  -->
+<!--1. crear la tabla responsive 
+   2. crear el formulario 
+   3. asignar los elementos html que recibiran la consulta sql
+   4. Elementos formulario mostrar(1), [(ngModel)]="modelo.item"-->
+   <button class="btn btn-primary" (click)="mostrar(1)">Agregar servicio</button>
+   <br>
+   <br>
+    
+  <!-- formulario de Servicio-->
+  <div class="col-lg-10" id="formulario" *ngIf="verf == true">
+    <div class="row">
+        
+     <div class="col-lg-6">
+        <label class="label-header" for="descripcion">Nombre de servicio</label>
+        <input type="text" id="nombre" class="form-control" [(ngModel)]="modelServicio.nombre" placeholder="Ingrese nombre de servicio">
+        <span style="color: brown;" *ngIf="validaNombre == false">Nombre Servicio</span>
+     </div>
+
+     <div class="col-lg-6">
+        <label class="label-header"  for="descripcion">Descripcion</label>
+        <input type="text" id="descripcion" class="form-control" [(ngModel)]="modelServicio.descripcion" placeholder="Ingrese nombre de servicio">
+        <span style="color: brown;" *ngIf="validaDescripcion == false">Descripcion</span>
+    </div>
+    
+     <div class="col-lg-6">
+        <label class="label-header" for="categoria">Categoria</label>
+     
+        <select id="categoria" class="form-select" [(ngModel)]="modelServicio.categoria">
+        <option value="Diseño">Diseño</option>
+        <option value="Entretenimiento">Entretenimiento</option>
+        <option value="Creacion">Creacion</option>
+        <option value="Produccion">Produccion</option>
+        <option value="Formacion">Formacion</option>
+        <option value="Gestion">Gestion</option>
+        <option value="Distribucion">Distribucion</option>
+        <option value="Economia Digital">Economia Digital</option>
+        <option value="Difusion">Difusion</option>
+        </select>     
+        <span style="color: brown;" *ngIf="validaCategoria== false">Insertar tipo</span>
+     </div>
+    
+    <div class="col-lg-6">
+        <label class="label-header"  for="precio">Precio</label>
+        <input type="text" id="precio" class="form-control" [(ngModel)]="modelServicio.precio" placeholder="Ingrese el precio">
+    </div>
+    
+    <div class="col-lg-6">
+        <label class="label-header"  for="moneda">Moneda</label>
+        <input type="text" id="moneda" class="form-control" [(ngModel)]="modelServicio.moneda" placeholder="COP" aria-label="COP" disabled>
+      </div>
+    
+    <div class="col-lg-6">
+        <label class="label-header"  for="duracion">Duración</label>
+        <input type="text" id="duracion" class="form-control" [(ngModel)]="modelServicio.duracion" placeholder="Ingrese la duración">
+    </div>
+    
+    <div class="col-lg-6">
+        <label for="Imagen" class="label-header">Imagen</label>
+        <input type="text" id="Imagen" class="form-control" [(ngModel)]="modelServicio.Imagen" placeholder="Ingrese la URL de la imagen">
+        <div class="form-group">
+            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+         </div>
+    </div>
+    <br>
+
+    <div class="col-lg-3">
+        <div>
+        <label  class="label-header"  for="destacado">Destacar</label>
+        <input type="text" id="destacado" class="form-control" [(ngModel)]="modelServicio.destacado" placeholder="NO" aria-label="NO" disabled>
+
+        <label  class="label-header" for="disponibilidad">Disponibilidad</label>
+        <input type="text" id="disponibilidad" class="form-control" [(ngModel)]="modelServicio.disponibilidad" placeholder="Ingrese la disponibilidad">
+      </div>
+    </div>
+    
+    <div class="col-lg-6">
+        <label  class="label-header" for="requisitos">Requisitos</label>
+        <input type="text" id="requisitos" class="form-control" [(ngModel)]="modelServicio.requisitos" placeholder="Ingrese los requisitos">
+    </div>
+    
+    
+    <div class="col-lg-6">
+      
+    </div>
+    
+
+
+     <div class="col-lg-12">
+        <button *ngIf="beditar == false" class="btn btn-primary" (click)="ingresar()">Guardar</button>
+        <button *ngIf="beditar == true" class="btn btn-primary" (click)="editar()">Editar</button>
+        <button class="btn btn-secondary" (click)="mostrar(0)">Cancelar</button>
+     </div>
+
+  </div>
+</div>
+
+<!--    creacion de card -->
+
+
+   <div class="col-lg-10">
+    <div class="card">
+       <div class="card-body">
+        <div class="row">
+          <div class="col-md-4 mb-4" *ngFor="let item of tdservicios">
+            <div class="card">
+              <img class="card-img-top" src="{{ item.imagen }}" alt="{{ item.nombre }}" style="height: 200px;">
+              <div class="card-body">
+                
+                <p class="card-text">Descripción: {{ item.descripcion }}</p>
+                <p class="card-text">Categoría: {{ item.categoria }}</p>
+                <p class="card-text">Precio: {{ item.precio }}</p>
+                <p class="card-text">Duración: {{ item.duracion }}</p>
+                </div>
+              <div class="card-footer">
+                <div class="btn-group" role="group">
+                  <a (click)="cargarDatos(item, item.id_servicio)" class="btn btn-primary" title="Editar">
+                    <i class="fas fa-edit"></i>
+                  </a>
+                  <a (click)="preguntar(item.id_servicio, item.nombre)" class="btn btn-danger" title="Eliminar">
+                    <i class="fas fa-eraser"></i>
+                  </a>
+                  <i class="mdi mdi-arrow-bottom-left-bold-outline:"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+
+<!-- tabla -->
+<br>  
+ 
+<br>
+<!-- Tercer div con tabla para mostrar servicios generales -->
+
+
+<div class="col-lg-10">
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Categoría</th>
+                    <th>Precio</th>
+                    <th>Moneda</th>
+                    <th>Duración</th>
+                    <th>Imagen</th>
+                    <th>Destacar</th>
+                    <th>Requisitos</th>
+                    <th>Disponibilidad</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of tdservicios" class="accordion">
+                    <td data-label="Nombre">{{ item.nombre }}</td>
+                    <td data-label="Descripción">{{ item.descripcion }}</td>
+                    <td data-label="Categoría">{{ item.categoria }}</td>
+                    <td data-label="Precio">{{ item.precio }}</td>
+                    <td data-label="Moneda">{{ item.moneda }}</td>
+                    <td data-label="Duración">{{ item.duracion }}</td>
+                    <td data-label="Imagen">{{ item.Imagen }}</td>
+                    <td data-label="Destacar">{{ item.destacado }}</td>
+                    <td data-label="Requisitos">{{ item.requisitos }}</td>
+                    <td data-label="Disponibilidad">{{ item.disponibilidad }}</td>
+                    <td data-label="Accion">
+                        <a (click)="cargarDatos(item, item.id_servicio)">
+                            <span class="fas fa-edit fa-2x editar" title="Editar"></span>
+                        </a>
+                        <a (click)="preguntar(item.id_servicio, item.nombre)">
+                            <span class="fas fa-eraser fa-2x eliminar" title="Eliminar"></span>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+

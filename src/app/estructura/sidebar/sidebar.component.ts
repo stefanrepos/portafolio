@@ -15,5 +15,18 @@ export class SidebarComponent {
     .pipe(
       map(result => result.matches),
       shareReplay()
-    );
+  );
+  
+
+  isSubMenuOpen = false;
+
+  toggleSubMenu() {
+    this.isSubMenuOpen = !this.isSubMenuOpen;
+  }
+
+  
+
 }
+
+
+

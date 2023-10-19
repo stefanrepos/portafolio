@@ -1,6 +1,61 @@
+
+//---------------------------------ESTILO PARA BOTONES ///////////
 input,select,button {
     margin-top: 10px;
     border-color: grey;
     border-width: 1px;
+    text-align: center;
+    margin-bottom: 10PX;
 
+}
+
+.editar{
+    color: #3498db;
+    cursor: pointer;
+}
+
+
+.eliminar{
+    color: #d9534f;
+    cursor: pointer;
+}
+.btn-primary {
+    background-color: #3498db; /* Color de fondo del botón Guardar/Editar */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados en el botón */
+    color: #fff; /* Texto en color blanco */
+    
+  }
+  
+  .btn-secondary {
+    background-color: #ccc; /* Color de fondo del botón Cancelar */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados en el botón */
+    color: #fff; /* Texto en color blanco */
+  }
+  
+  .text-danger {
+    color: #d9534f; /* Color de texto rojo para los mensajes de error */
+  }
+
+  //---------------------------------ESTILO PARA CONTENEDORES ///////////
+
+
+    //---------------------------------ESTILO PARA CARD ///////////
+
+
+.icon-container a {
+  margin-right: 10px; /* Separacion de elementos*/
+}
+
+.spacer{
+  margin-top: 50px;
+}
+
+.card{
+  border-color: #fff;
+
+}
+.card-form{
+  border-color: red;
 }

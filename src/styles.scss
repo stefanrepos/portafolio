@@ -1,12 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
-@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 
-  
   /* Estilos de respuesta (responsive) */
   /* Por ejemplo, para ajustar el tamaño del texto según el ancho de la ventana */
   @media (max-width: 768px) {
     body {
-      font-size: 16px; /* Tamaño de fuente más grande para pantallas más grandes */
+      font-size: 10px; /* Tamaño de fuente más grande para pantallas más grandes */
     }
   }
-  

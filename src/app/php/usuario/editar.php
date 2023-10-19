@@ -1,30 +1,32 @@
-
 <?php
-// Permite que cualquier dominio acceda a este recurso
-//The script first checks to see if the request is coming from a trusted domain. If it is, the script will allow the request to proceed. If it is not, the script will deny the request.//
-
-header('Access-Control-Allow-Origin: *');       
+//Permite que cualquier dominio acceda a este recurso
+header('Access-Control-Allow-Origin: *');
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
 
-$json = file_get_contents('php://input');
+// leer los datos JSON
+$json   = file_get_contents('php://input');
+$id     = $_GET['id'];
+// decodificar el objeto json para convertir esos datos en un objeto PHP - llamado $params
+$params = json_decode($json);
+// incluir el contenido de "conexion.php"  con las configuraciones de conexión a la base de datos, 
+require("../conexion.php");
 
-$params = json_decode ($json);
+$editar = "UPDATE bkusuario SET nombre = '$params->nombre',usuario='$params->usuario',clave = sha1('$params->clave'), tipo = '$params->tipo' WHERE id_usuario=$id";
 
-require("../conexion.php");     
-
-$editar = "UPDATE bkusuario SET nombre = '$params->nombre',usuario=$params->usuario',clave = sha1('$params->clave'), tipo = '$params->tipo' WHERE id_usuario=$params->id_usuario";
-   
 mysqli_query($conexion, $editar) or die("no edito");
 
-class Result{};
+class Result
+{
+}
+;
 
-$response = new Result();
+$response            = new Result();
 $response->resultado = 'OK';
-$response->mensaje = 'datos modificados';
+$response->mensaje   = 'datos modificados';
 
-
-header('Content-Type:application/json');
 echo json_encode($response);
+header('Content-Type:application/json');
+
 
 
 ?>

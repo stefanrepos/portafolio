@@ -1,0 +1,136 @@
+.container{
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    justify-content:flex-start;
+    align-items:unset;
+    align-content:flex-start;
+    height:100vh; /*Este valor lo puedes omitir si la altura de tu componente esta definida*/
+    background-color: whitesmoke;
+    margin-left: 0%; 
+  }
+  
+  .icon-button {
+      margin-left: 50px; /* Espacio entre los botones de icono */
+      font-size: 40px; /* Tamaño del icono */
+  }
+  
+  .label-header {
+    display: block;
+    margin-bottom: 5px; /* Agrega espacio entre la etiqueta y el input */
+    text-align: left; /* Alinea el texto a la izquierda */
+    margin: 10px;
+
+}
+
+  /*Estilos Generales*/
+  
+  
+  input,select,button {
+      margin-top: 10px;
+      border-color: grey;
+      border-width: 1px;
+  
+  
+  }
+  
+  .editar{
+      color: #3498db;
+      cursor: pointer;
+  }
+  
+  
+  
+  .eliminar{
+      color: #d9534f; 
+      cursor: pointer;
+  }
+  
+  #formulario {
+      background-color: #f7f7f7; /* Color de fondo suave */
+      padding: 20px; /* Espaciado interno */
+      border: 1px solid #ccc; /* Borde del formulario */
+      border-radius: 5px; /* Bordes redondeados */
+    }
+    
+    .form-control {
+      border: 1px solid #ccc; /* Borde de los campos de entrada */
+      border-radius: 5px; /* Bordes redondeados en los campos de entrada */
+    }
+    
+    .btn-primary {
+      background-color: #3498db; /* Color de fondo del botón Guardar/Editar */
+      border: none; /* Sin borde */
+      border-radius: 5px; /* Bordes redondeados en el botón */
+      color: #fff; /* Texto en color blanco */
+    }
+    
+    .btn-secondary {
+      background-color: #ccc; /* Color de fondo del botón Cancelar */
+      border: none; /* Sin borde */
+      border-radius: 5px; /* Bordes redondeados en el botón */
+      color: #fff; /* Texto en color blanco */
+    }
+    
+    .text-danger {
+      color: #d9534f; /* Color de texto rojo para los mensajes de error */
+    }
+    
+
+    //ESTILOS PARA LA TABLA - TIPO ADATPATIVE 
+
+    /* Estilo para dispositivos móviles */
+/* Estilo para dispositivos móviles */
+@media (max-width: 767px) {
+  .table-responsive {
+      width: 100%;
+      overflow-x: auto;
+  }
+
+  .table {
+      width: 100%;
+  }
+
+  .table thead {
+      display: none; /* Ocultar el encabezado en dispositivos móviles */
+  }
+
+  .table tbody tr {
+      display: block;
+      margin-bottom: 1em;
+      border: 1px solid #ccc;
+  }
+
+  .table tbody td {
+      text-align: left;
+      font-weight: bold;
+      padding: 0.5em;
+  }
+
+  .table tbody td:before {
+      content: attr(data-label);
+      display: inline-block;
+      font-weight: normal;
+      margin-right: 0.5em;
+  }
+
+  .table tbody td:last-child {
+      border: 0; /* Eliminar el borde en la última celda */
+  }
+
+  .table tbody td a {
+      display: block;
+      text-align: center;
+      margin-top: 1em;
+  }
+
+  /* Estilo para el acordeón */
+  .accordion {
+      cursor: pointer;
+  }
+
+  .accordion-content {
+      display: none;
+      padding: 10px;
+  }
+}

@@ -1,34 +1,104 @@
-<h1>Menu Soporte</h1>
 
-<div class="container">
-  <div class="marco" style="margin-top: 20px;">
-sada
+   <div class="container px-4 py-5" id="hanging-icons">
+    
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+      <div class="col d-flex align-items-start">
+        <div class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+        </div>
+        <div>
+          <h3 class="fs-2 text-body-emphasis">Terminos y Condiciones</h3>
+          <p> Revise nuestros términos y condiciones. Estos documentos establecen las pautas y acuerdos fundamentales para el uso de nuestros servicios y la interacción en nuestra plataforma.</p>
+          <a href="#" class="btn btn-primary">
+            Ver mas
+          </a>
+        </div>
+      </div>
+      <div class="col d-flex align-items-start">
+        <div class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+        <i class=" fa-concierge-bell"></i>
+        </div>
+        <div>
+          <h3 class="fs-2 text-body-emphasis">Reportar Fallas</h3>
+          <p>Utilice 'Reportar Fallas' para notificar problemas técnicos. Proporcione detalles precisos, incluyendo fecha, hora y descripción detallada, para una rápida resolución y mejora de nuestros servicios</p>
+          <button class="btn btn-primary" (click)="mostrar(1)">Crear ticket</button>
+          <br>
+        </div>
+      </div>
+      <div class="col d-flex align-items-start">
+        <div class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+        </div>
+        <div>
+          <h3 class="fs-2 text-body-emphasis">Preguntas frecuentes</h3>
+          <p>Descubra orientación valiosa en nuestras 'Preguntas Frecuentes' para su portafolio digital tipo CMS. Aprenda a maximizar la exposición de su arte y optimizar su presencia en la plataforma</p>
+          <a href="#" class="btn btn-primary">
+           Ver mas
+          </a>
+        </div>
+      </div>
+    </div>
+
+<!-- CREAR TICKET 
+ -->
+<div class="col-lg-9" id="formulario" *ngIf="verf == true">
+    <div class="row">
+     <div class="col-lg-6 align-items-center">
+      <label for="contacto">Correo Electrónico:</label>
+        <input type="email" id="contacto" class="form-control" [(ngModel)]="msoporte.contacto" placeholder="Ingrese su correo Electrónico">
+        <span style="color: brown;" *ngIf="validaContacto == false">Correo invalido</span>
+     </div>
+     <div class="col-lg-6">
+      <label class="input-header" for="categoria">Seleccione la falla que presenta:</label>
+      <select class="form-select" [(ngModel)]="msoporte.categoria"  aria-label="Default select example">
+             <option value="tecnica">Falla Técnica</option>
+        <option value="accesos">Falla de Accesos</option>
+        <option value="seguridad">Falla de Seguridad</option>
+        <option value="generales">Falla General</option>
+      </select>
+      <span style="color: brown;" *ngIf="validaCategoria == false">Seleccione tipo de falla</span>
+    </div>
+     <div class="col-lg-6">
+        <div>
+            <label for="descripcion">Describa el problema </label>
+            <input class="form-control"  type="text" id="descripcion" name="descripcion">
+          </div>
+     
+        <span style="color: brown;" *ngIf="validaTipo == false">Insertar tipo</span>
+     </div>
+     <div class="col-lg-12">
+        <button *ngIf="beditar == false" class="btn btn-primary" (click)="ingresar()">Guardar</button>
+        <button *ngIf="beditar == true" class="btn btn-primary" (click)="editar()">Editar</button>
+        <button class="btn btn-secondary" (click)="mostrar(0)">Cancelar</button>
+     </div>
   </div>
 </div>
-<br>
+<br> 
 
-<div class="container col-12">
-  <h1>Generales</h1>
-        <button class="btn btn-primary" (click)="consultas()">recuento</button><br>
+</div>
+
 <br>
-        <table class="table table-hover">
-            <tr>
-                <th>fecha_creacion</th>
-                <th>contacto</th>
-                <th>numero</th>
-                <th>origen</th>
-                <th>proceso</th>
-                <th>estado</th>
+<div class="container">
+    <table class="table table-hover">
+      <tr>
+        <th>contacto</th>
+        <th>categoria</th>
+        <th>tipo</th>
+        <th>Fecha estima solucion</th>
                 
-            </tr>
-            <tr *ngFor="let item of soportes">
-                <td>{{item.fecha_creacion}}</td>
-                <td>{{item.contacto}}</td> 
-                <td>{{item.numero}}</td> 
-                <td>{{item.origen}}</td> 
-                <td>{{item.proceso}}</td> 
-                <td>{{item.prioridad}}</td> 
-
-            </tr>
-        </table>
+      </tr>
+      <tr *ngFor="let item of tsoportes">
+        <td>{{item.contacto}}</td> 
+        <td>{{item.categoria}}</td> 
+        <td>{{item.tipo}}</td> 
+        <td>
+          <a (click)="cargarDatos(item, item.id_soporte)">
+          <span class="fas fa-edit fa-2x editar" title="editar"></span>
+          </a>
+          <a (click)="preguntar(item.id_soporte, item.contacto)">
+             <!--    //definir las entradas en tipo any en TS //  -->
+             <span class="fas fa-eraser fa-2x eliminar" title="eliminar"></span>
+          </a>
+       </td>
+        
+      </tr>
+    </table>
 </div>

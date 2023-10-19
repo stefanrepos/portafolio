@@ -1,84 +1,21 @@
-.grid-container {
-  margin: 10px;
+.eliminar{
+    color: #d9534f;
+    cursor: pointer;
 }
-
-.dashboard-card {
-  position: absolute;
-  top: 40px;
-  left: 10px;
-  right: 15px;
-  bottom: 15px;
-  background-color: LightGray;
-}
-
-.more-button {
-  position: absolute;
-  top: 5px;
-  right: 10px;
-}
-
-.dashboard-card-content {
-  text-align: center;
-}
-
-
-/*estilos para el perfil */
-
-.card {
-  background-color: dodgerblue;
-  color: white;
-  padding: 1rem;
-  height: 4rem;
-}
-
-.cards {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-gap: 1rem;
-}
-
-/* Screen larger than 600px? 2 column */
-@media (min-width: 600px) {
-  .cards { grid-template-columns: repeat(2, 1fr); }
-}
-
-/* Screen larger than 900px? 3 columns */
-@media (min-width: 900px) {
-  .cards { grid-template-columns: repeat(3, 1fr); }
-}
-
-
-th, td {
-  padding: 15px;
-  text-align: left;
-  border-color: black;
-}
-/* COUNTERS  */
-
-.container{
-  display: flex;
-  flex-direction: row;
-
-
-}.counter {
-  background-color: #f5f5f5;
-  padding: 20px 0;
-  border-radius: 5px;
-}
-
-.count-title {
-  font-size: 40px;
-  font-weight: normal;
-  margin-top: 10px;
-  margin-bottom: 0;
-  text-align: center;
-}
-
-.count-text {
-  font-size: 13px;
-  font-weight: normal;
-  margin-top: 10px;
-  margin-bottom: 0;
-  text-align: center;
-}
+.btn-primary {
+    background-color: #3498db; /* Color de fondo del botón Guardar/Editar */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados en el botón */
+    color: #fff; /* Texto en color blanco */
+  }
+  
+  .btn-secondary {
+    background-color: #ccc; /* Color de fondo del botón Cancelar */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados en el botón */
+    color: #fff; /* Texto en color blanco */
+  }
+  
+  .text-danger {
+    color: #d9534f; /* Color de texto rojo para los mensajes de error */
+  }

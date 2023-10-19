@@ -1,3 +1,5 @@
+
+
 .fixed-header {
   position: fixed;
   top: 0;
@@ -12,10 +14,9 @@
 }
 
 .logo {
-  height: 60px; /* Ajusta el tamaño del logo según tus necesidades */
-  margin-right: 20px; /* Espacio entre el logo y la navegación */
+  height: 40px; /* Ajusta la altura del logotipo según tus necesidades */
+  margin-right: 20px; /* Agrega margen derecho para separar el logotipo de los elementos de navegación */
 }
-
 .nav-list {
   display: flex; /* Utiliza flexbox para alinear elementos horizontalmente */
   justify-content: center; /* Centra los elementos horizontalmente */
@@ -28,6 +29,6 @@
 @media (max-width: 768px) {
   /* Oculta el logo en pantallas pequeñas */
   .logo {
-    display: none;
+    display: true;
   }
 }

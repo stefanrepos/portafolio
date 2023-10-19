@@ -17,9 +17,7 @@ while ($reg = mysqli_fetch_array($res))
     $vec[] = $reg;
 }
 
-//then encodes the array as JSON and sends it back to the client
 $cad =json_encode($vec);
-echo $cad;
-//the response is in JSON format.
 header('Content-Type:application/json');
+echo $cad;
 ?>

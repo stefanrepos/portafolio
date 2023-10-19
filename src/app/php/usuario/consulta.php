@@ -1,16 +1,15 @@
 <?php
 // Permite que cualquier dominio acceda a este recurso
-//The script first checks to see if the request is coming from a trusted domain. If it is, the script will allow the request to proceed. If it is not, the script will deny the request.//
 
 header('Access-Control-Allow-Origin: *');       
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
 
 // contains the database connection information//
 require("../conexion.php");
-//query to select all the users from the `usuarios` table. The results of the query are stored in a variable called `$res`//
+// query selector 
 $con = "SELECT * FROM bkusuario ORDER BY nombre";
 $res = mysqli_query($conexion, $con) or die('no consulta de usuario');
-//stores each row in an array called `$vec`//
+//vector 
 $vec = [];
 while ($reg = mysqli_fetch_array($res))
 {

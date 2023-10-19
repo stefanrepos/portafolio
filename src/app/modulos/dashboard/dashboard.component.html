@@ -1,63 +1,24 @@
-<div class="grid-container">
-  <!-- Título del dashboard -->
-  <h1 class="mat-h1">Dashboard</h1>
 
-  <!-- Generar una cuadrícula de tarjetas utilizando mat-grid-list de Angular Material -->
-  <mat-grid-list cols="2" rowHeight="300px" class="bottom-grid-list">
-    <!-- Usar *ngFor para repetir elementos HTML para cada tarjeta en dashboardCards -->
-    <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
-      <mat-card class="dashboard-card">
-        <mat-card-header>
-          <mat-card-title>
-            <!-- Mostrar el título de la tarjeta -->
-            {{ card.title }}
-
-            <!-- Botón para desplegar menú de opciones -->
-            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
-              <mat-icon>more_vert</mat-icon>
-            </button>
-
-            <!-- Menú de opciones -->
-            <mat-menu #menu="matMenu" xPosition="before">
-              <button mat-menu-item>Actualizar</button>
-              <button mat-menu-item>Eliminar</button>
-              <button mat-menu-item>Guardar</button>
-            </mat-menu>
-          </mat-card-title>
-        </mat-card-header>
-        <!-- ------------------------------FORMATO DEL CONTENIDO -->
-
-     <!-- -----------------------------crea las funciones en archivo TS para llamar el texto -->
-        <mat-card-content class="dashboard-card-content">
-          <!-- Comprobar si card.content existe y es una tarjeta de perfil -->
-          <div *ngIf="card.content && card.title === 'Perfil'">
-                        aca va info
+<div class="container mt-5">
+    <div class="row">
+      <div class="col-md-4" *ngFor="let item of usuario">
+        <div class="card mb-3">
+          <img src="../../../assets/dist/img/artivo-logo.png" class="card-img-top" alt="Foto de perfil" width="50px">
+          <div class="card-body">
+            <h5 class="card-title">{{item.nombre}}</h5>
+            <p class="card-text">Usuario: {{item.usuario}}</p>
+            <p class="card-text">Tipo: {{item.tipo}}</p>
           </div>
-        
-
-          <!-- Comprobar si card.content existe y es una tarjeta "About" -->
-          <div *ngIf="card.content && card.title === 'About'">
-            <div> <h1>Descripcion</h1> <br>{{ card.content.description}}</div>
-         
+          <div class="card-footer">
+            <a (click)="cargarDatos(item, item.id_usuario)" class="btn btn-primary">
+              <span class="fas fa-edit"></span> Editar
+            </a>
+            <a (click)="preguntar(item.id_usuario, item.nombre)" class="btn btn-danger">
+              <span class="fas fa-eraser"></span> Eliminar
+            </a>
           </div>
-
-
-           <!-- Comprobar si card.content existe y es una tarjeta "Proyectos" -->
-          <div *ngIf="card.content && card.title === 'Proyectos'">
-           
-            <div class="container">
-
-              
-            </div>   
-
-
-            
-          </div>  
-        </mat-card-content>
-
-
-        <!-- ------------------------------FORMATO DEL CONTENIDO -->
-      </mat-card>
-    </mat-grid-tile>
-  </mat-grid-list>
-</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -1,18 +1,5 @@
 
 
-.custom-style {
-    background-color: #3498db;
-    color: white;
-    text-align: center;
-    display: flex;
-    justify-content: center; /* Centro horizontalmente */
-    align-items: center; /* Centro verticalmente */
-    padding: 20px; /* Espacio interior */
-    border-style: solid;
-   
-   
-}
-
 .icon-button {
     margin-left: 50px; /* Espacio entre los botones de icono */
     font-size: 40px; /* Tamaño del icono */
@@ -20,3 +7,55 @@
 
 
 /*Estilos Generales*/
+
+
+input,select,button {
+    margin-top: 10px;
+    border-color: grey;
+    border-width: 1px;
+
+
+}
+
+.editar{
+    color: #3498db;
+    cursor: pointer;
+}
+
+
+
+.eliminar{
+    color: #d9534f; 
+    cursor: pointer;
+}
+
+#formulario {
+    background-color: #f7f7f7; /* Color de fondo suave */
+    padding: 20px; /* Espaciado interno */
+    border: 1px solid #ccc; /* Borde del formulario */
+    border-radius: 5px; /* Bordes redondeados */
+  }
+  
+  .form-control {
+    border: 1px solid #ccc; /* Borde de los campos de entrada */
+    border-radius: 5px; /* Bordes redondeados en los campos de entrada */
+  }
+  
+  .btn-primary {
+    background-color: #3498db; /* Color de fondo del botón Guardar/Editar */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados en el botón */
+    color: #fff; /* Texto en color blanco */
+  }
+  
+  .btn-secondary {
+    background-color: #ccc; /* Color de fondo del botón Cancelar */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados en el botón */
+    color: #fff; /* Texto en color blanco */
+  }
+  
+  .text-danger {
+    color: #d9534f; /* Color de texto rojo para los mensajes de error */
+  }
+  

@@ -1,23 +1,19 @@
-<!-- Page Heading -->
 
 <app-header></app-header>
-<div class="container-fluid px-md-0">
+<div class="container-fluid">
   <div class="row">
+
+    <div class="col-sm-2">
     <app-sidebar></app-sidebar>
-    <main class="col-lg-10 ms-sm-auto col-lg-10 px-md-1">
-     
-      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-5 pb-2 mb-3"></div>
-      <!-- Aquí iría el contenido principal de tu página -->
-      
-      <router-outlet></router-outlet>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-    </main>
- 
+    </div>
+    <div class="col-sm-10" >
+    <!-- Contenido principal -->
+      <main class="main">
+          <router-outlet></router-outlet>
+
+      </main>
+
+    </div>
   </div>
-  <app-footer></app-footer>
+  <footer></footer>
 </div>

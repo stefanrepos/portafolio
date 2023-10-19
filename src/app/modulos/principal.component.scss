@@ -1,17 +1,5 @@
 
 
-.container.col-12 {
-    max-width: 100%;
-    margin: 0 auto;
-    background-color: aquamarine;
-    border: 1px solid #ffffff;
-    border-radius: 5px;
-    padding: 20px;
-
-
-}
-
-
 
 @media screen and (max-width: 760px) {
     .navbar a {
@@ -19,3 +7,9 @@
       display: flex;
     }
   }
+
+.main{
+  margin-top: 80px; /* Ajusta la altura según la altura de tu encabezado */
+  margin-left: 0%; 
+ 
+}
