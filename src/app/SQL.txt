@@ -1,0 +1,55 @@
+//las variables numericas van sin la ' , probada ok funcionando// 
+/* $ins = "INSERT INTO portafolio (creador, 
+        nombre, 
+        descripcion, 
+        tipo, 
+        FO_areas, 
+        estado, 
+        fecha_creacion, 
+        FO_canales) 
+VALUES ('Prueba',
+        'MiPrueba',
+        'Registro prueba',
+        'Profesional',
+        '1',
+        'activo',
+        '2023-10-29',
+        '1')";
+
+
+/// prueba para servicios 
+
+$ins = "INSERT INTO servicios (
+        nombre, 
+        descripcion, 
+        FO_areas, 
+        precio, 
+        FO_moneda, 
+        duracion, 
+        Imagen, 
+        contacto, 
+        disponibilidad, 
+        requisitos, 
+        fechaPuplic,
+        creador) 
+    VALUES ('ConsultaStefan',
+    '$params->Consultas Desarrollo', 
+     '5',
+    '25000', 
+     '1', 
+    ' 4 horas', 
+    '0', 
+    '3132537654, 
+    'si', 
+    'si',
+    '2023-10-29',
+    'Superuser');
+
+***************************************************************
+
+SELECT s.*, a.nombrearea
+FROM servicios AS s
+INNER JOIN areas AS a
+ON s.FO_areas = a.id_areas;
+
+

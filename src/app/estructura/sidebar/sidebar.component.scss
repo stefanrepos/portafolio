@@ -1,5 +1,5 @@
 .sidenav {
-  background-color: #3498db;
+  background-color: rgba(37, 117, 252, 1);
   width: auto; /* Ancho del sidebar */
   position: fixed; /* Fija el sidebar en la ventana */
   height: 100%; /* Ocupa toda la altura de la ventana */
@@ -7,35 +7,22 @@
   transition: width 0.3s; /* Agrega una transición para un efecto suave */
   overflow-y: auto; /* Agrega desplazamiento vertical si el contenido es largo */
   z-index: 1; /* Asegura que esté por encima del contenido principal */
-}
-
-/* Estilo de los elementos de la lista en el mat-sidenav */
-.sidenav .mat-list-item {
-  /* Elimina el relleno para los elementos de la lista */
-  border-bottom: 1px solid #ccc; /* Línea divisoria entre elementos de la lista */
-  transition: background-color 0.2s; /* Transición suave del color de fondo */
+  padding-top: 50px;
 
 }
 
+.icon{
+  margin-right: 10px; /* Ajusta el valor según el espacio deseado */
+  align-items: center;
+}
 
-
-
-/* Estilo para dispositivos móviles (menos de 768px de ancho) */
+/* Mostrar el sidebar en dispositivos móviles */
 @media (max-width: 768px) {
-  .sidenav {
-    width: 0; /* Oculta el sidebar en dispositivos móviles */
-  }
-
-  .main-content {
-    margin-left: 0; /* Elimina el margen izquierdo en dispositivos móviles */
+  .sidebar {
+    left: 0; /* Muestra el sidebar al hacer clic en el botón de menú */
   }
 }
 
-.spacer {
-  height: 60px; /* Ajusta la altura según tus necesidades */
-}
-
-
-.custom-container{
-  margin: 10px;
+.item{
+  padding-top: 60px;
 }

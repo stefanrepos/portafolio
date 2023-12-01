@@ -1,13 +1,9 @@
-.container-custom{
-  display:flex;
-  flex-direction:row;
-  flex-wrap:wrap;
-  justify-content:flex-start;
-  align-items:unset;
-  align-content:flex-start;
-  height:auto; /*Este valor lo puedes omitir si la altura de tu componente esta definida*/
-  background-color: whitesmoke;
-  margin-left: 0%; 
+.card {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+  font-size: 16px;
 }
 
 .icon-button {

@@ -492,3 +492,246 @@ template de login  -->
    </div>
  </div>
  
+<!--  ********************* -->
+
+      <!--  <div class="col-lg-4">
+         <label for="FO_areas" class="form-label label-header">Area destacada</label>
+         <select id="FO_areas" class="form-control" [(ngModel)]="uportafolio.estado" placeholder="seleccione">
+            <option value="Artes Visuales">Artes Visuales</option>
+            <option value="Cine y Audiovisual">Cine y Audiovisual</option>
+            <option value="Música">Música</option>
+            <option value="Literatura">Literatura</option>
+            <option value="Diseño">Diseño</option>
+            <option value="Artes Escénicas">Artes Escénicas</option>
+            <option value="Software y Videojuegos">Software y Videojuegos</option>
+            <option value="Publicidad y Marketing">Publicidad y Marketing</option>
+            <option value="Patrimonio Cultural">Patrimonio Cultural</option>
+            <option value="Moda">Moda</option>
+            <option value="Gastronomía">Gastronomía</option>
+            <option value="Arquitectura">Arquitectura</option>
+            <option value="Turismo Cultural">Turismo Cultural</option>
+         </select>
+         <span style="color: brown;" *ngIf="validatipo == false">Insertar tipo</span>
+      </div> -->
+
+
+<!--       **********************************************SOPORTE 
+
+
+       -->
+<br>
+<div class="container">
+    <table class="table table-hover">
+      <tr>
+        <th>contacto</th>
+        <th>categoria</th>
+        <th>tipo</th>
+        <th>Fecha estima solucion</th>
+                
+      </tr>
+      <tr *ngFor="let item of tsoportes">
+        <td>{{item.contacto}}</td> 
+        <td>{{item.categoria}}</td> 
+        <td>{{item.tipo}}</td> 
+        <td>
+          <a (click)="cargarDatos(item, item.id_soporte)">
+          <span class="fas fa-edit fa-2x editar" title="editar"></span>
+          </a>
+          <a (click)="preguntar(item.id_soporte, item.contacto)">
+             <!--    //definir las entradas en tipo any en TS //  -->
+             <span class="fas fa-eraser fa-2x eliminar" title="eliminar"></span>
+          </a>
+       </td>
+        
+      </tr>
+    </table>
+</div>
+
+<!--       **********************************************SOPORTE 
+
+
+
+  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="false">
+
+  
+<mat-sidenav-container>
+    <div class="container">
+      <div class="spacer"></div> 
+      <div class="spacer"></div> 
+    </div>
+    <mat-nav-list>
+   <!--    <a mat-list-item [routerLink]="['/portafolios']">
+        <i class="fas fa-briefcase"></i> Portafolios
+      </a>
+   -->
+   <a mat-list-item [routerLink]="['/suscripciones']">
+    <i class="fa fa-newspaper"></i> Suscripciones
+  </a>
+
+<!--        
+  <a mat-list-item [routerLink]="['/dashboard']">
+    <i class="fas fa-home"></i> Perfiles
+  </a>
+        -->
+  <a mat-list-item [routerLink]="['/soporte']">
+    <i class=" fas fa-desktop "></i>
+    Soporte</a>
+
+<!--       <a mat-list-item [routerLink]="['/usuario']">
+      <i class=" fas fa-cog "></i>
+      Cuenta
+    </a> -->
+</mat-nav-list>
+
+</mat-sidenav>
+
+</mat-sidenav-container>
+
+
+
+<div class="container-fluid">
+  <div class="row">
+    <!-- Sidebar (colapsable en dispositivos móviles) -->
+    <nav id="sidebar" class="bg-primary p-3 text-light col-md-3 col-lg-2 d-md-block sidebar">
+      <div class="position-sticky">
+        <!-- Logo para colapsar el sidebar en dispositivos móviles -->
+        <button class="btn btn-link text-light d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle sidebar" id="toggleSidebar">
+          <i class="fas fa-bars"></i>
+        </button>
+
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/suscripciones']" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+              <i class="fa fa-newspaper"></i> Suscripciones
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/soporte']">
+              <i class="fas fa-desktop"></i> Soporte
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+<h1>Fromulario de Registro </h1> 
+
+<div class="col-lg-10 col-12">
+    <button class="btn btn-primary" (click)="mostrar(1)">Registrar perfil</button><br><br> 
+    <div class="row">
+        <div >
+          <div class="card-form">
+            <div id="formulario" *ngIf="mostrarFormulario == true">
+              <h1>Información Básica</h1>
+              <div class="row">
+                <div class="col-lg-6 col-12">
+                  <label for="nombre">Usuario</label>
+                  <input type="email" id="usuario" class="form-control" [(ngModel)]="usuarioLoggeado.usuario" placeholder="Ingrese su correo" >
+                  <span style="color: brown;" *ngIf="validausuario == false">Insertar usuario</span>
+                </div>
+                <div class="col-lg-6 col-12">
+                  <label for="nombre">Contraseña</label>
+                  <input type="password" id="clave" class="form-control" [(ngModel)]="usuarioLoggeado.clave" placeholder="Ingrese su contraseña" >
+                  <span style="color: brown;" *ngIf="validaclave == false">Insertar clave</span>
+                </div>
+                <div class="col-lg-6 col-12 align-items-center">
+                  <label for="nombre">Nombre de Usuario</label>
+                  <input type="text" id="nombre" class="form-control" [(ngModel)]="usuarioLoggeado.nombre" placeholder="Ingrese su nombre" >
+                  <span style="color: brown;" *ngIf="validanombre == false">Insertar nombre</span>
+                </div>
+              </div>
+      
+              <div class="form-group text-left col-lg-6 col-12">
+                <label for="contacto">Contacto</label>
+                <input type="text" class="form-control" id="contacto" placeholder="Número de contacto">
+              </div>
+      
+             
+              <div class="form-group text-left col-lg-6 col-12">
+                <label for="canales">Canales</label>
+                <input type="text" class="form-control" id="redes" placeholder="Canales">
+              </div>
+      
+              
+              <div class="form-group text-left col-lg-6 col-12">
+                <label for="canales">Fecha de nacimiento</label>
+                <input type="text" class="form-control" id="fecha" placeholder="Fecha">
+              </div>
+      
+              
+              <div class="form-group text-left col-lg-6 col-12">
+                <label for="fotoPerfil">Foto de Perfil</label>
+                <input type="file" class="form-control-file" id="fotoPerfil">
+              </div>
+      
+              
+              <div class="form-group text-left col-lg-6 col-12">
+                <label for="idioma">Idioma</label>
+                <select class="form-control" id="idioma">
+                  <option value="es">Español</option>
+                  <option value="en">Inglés</option>
+                  <option value="fr">Francés</option>
+                  <!-- Agrega más opciones según tus necesidades -->
+                </select>
+              </div>
+              <div class="form-group text-left col-lg-6 col-12">
+              <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="privacidad">
+                <label class="form-check-label" for="privacidad">Destacar</label>
+              </div>
+      
+              <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="notificaciones">
+                <label class="form-check-label">Recibir Notificaciones</label>
+              </div>
+            </div>
+              
+              <div class="form-group text-left col-lg-6 col-12">
+                <label for="areas">Selecciona un área de Economía Naranja:</label>
+                <select id="areas" name="areas" class="form-control">
+                  <option value="Artes Visuales">Artes Visuales</option>
+                  <option value="Cine y Audiovisual">Cine y Audiovisual</option>
+                  <option value="Música">Música</option>
+                  <option value="Literatura">Literatura</option>
+                  <option value="Diseño">Diseño</option>
+                  <option value="Artes Escénicas">Artes Escénicas</option>
+                  <option value="Software y Videojuegos">Software y Videojuegos</option>
+                  <option value="Publicidad y Marketing">Publicidad y Marketing</option>
+                  <option value="Patrimonio Cultural">Patrimonio Cultural</option>
+                  <option value="Moda">Moda</option>
+                  <option value="Gastronomía">Gastronomía</option>
+                  <option value="Arquitectura">Arquitectura</option>
+                  <option value="Turismo Cultural">Turismo Cultural</option>
+                </select>
+              </div>
+      
+              
+              <div class="form-group text-left col-lg-6 col-12">
+                <label for="pais">País</label>
+                <input type="text" class="form-control" id="pais">
+              </div>
+              <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="terminos">
+                <label class="form-check-label">Acepto Tterminos y Condiciones</label>
+              </div>
+              <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+
+</div>

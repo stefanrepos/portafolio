@@ -28,4 +28,3 @@ export class ValidauserGuard implements CanActivate {
     return true;
   }
 }
-

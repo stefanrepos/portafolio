@@ -8,7 +8,6 @@ import { LoginService } from 'src/app/servicios/login.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-
 /* Implementar la interfaz OnInit para inicializar componentes y ejecutar código
   * validar que Oninit se encuentre cargado en el import
  */  
@@ -37,7 +36,7 @@ export class LoginComponent implements OnInit{ /**Inicializar el componente */
   /*
   * Crear el constructor - Código de inicialización y configuración del componente*/
   constructor(private slogin:LoginService, private router: Router) {}
-  /** Metodo de ciclo de vida- Se llama solo una vez, justo después de que el componente y sus propiedades hayan sido inicializados*/
+  /*Metodo de ciclo de vida- Se llama solo una vez, justo después de que el componente y sus propiedades hayan sido inicializados*/
   ngOnInit(): void{ 
      console.log('El componente se ha cargado');
   }
@@ -63,8 +62,6 @@ export class LoginComponent implements OnInit{ /**Inicializar el componente */
         }
       }) 
   }
-  
-  
 
 
 }

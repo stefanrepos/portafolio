@@ -1,0 +1,20 @@
+
+
+<p>modulo de galeria</p>
+
+<form action="upload.php" method="POST" enctype="multipart/form-data">
+
+<div style="text-align:center">
+	<div [innerHtml]='msg' *ngIf="msg" style="color: red;"></div>
+	<div><img [src]="url" *ngIf="url" style="width: 200px;"></div>
+	<p>
+		<input name="file" type="file" (change)="selectFile($event)">
+    <input type="submit" value="Upload Image" name="submit">
+
+	<button (click)="mostrarAtributosImagen()">Mostrar atributos</button>
+	<button type="button" (click)="enviarImagen()">Enviar imagen</button>
+
+	</p>
+</div>
+
+</form>

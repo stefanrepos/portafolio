@@ -11,7 +11,13 @@ $params = json_decode($json);
 // incluir el contenido de "conexion.php"  con las configuraciones de conexión a la base de datos, 
 require("../conexion.php");
 
-$editar = "UPDATE bkusuario SET nombre = '$params->nombre',usuario='$params->usuario',clave = sha1('$params->clave'), tipo = '$params->tipo' WHERE id_usuario=$id";
+$editar = "UPDATE bkusuario 
+SET 
+nombre = '$params->nombre',
+usuario='$params->usuario',
+clave = sha1('$params->clave'), 
+tipo = '$params->tipo' 
+WHERE id_usuario=$id";
 
 mysqli_query($conexion, $editar) or die("no edito");
 

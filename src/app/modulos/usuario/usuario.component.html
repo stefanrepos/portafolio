@@ -1,45 +1,69 @@
 <!--  saludo -->
 <h1>Bienvenido</h1>
-
-
-
+<div class="container">
 <!-----------ENCABEZADO--------------------------------------------------->
 <div class="card d-flex justify-content-center align-items-center" >
-
-   
-  <div class="text-center">
-
-    <img src="../../../assets/dist/img/artivo-logo.png" class="mb-3 rounded-circle" style="width: 150px;">
-    <div class="card-body text-center">
-      <p class="card-title">{{ usuarioLoggeado.nombre }}</p>
-      <p class="card-text">{{ usuarioLoggeado.usuario }}</p>
-      <p class="card-text">{{ usuarioLoggeado.tipo }}</p>
-  
-    </div>
-    <div class="icon-container">
-      <a href="#"><i class="fab fa-linkedin fa-2x"aria-hidden="true"></i></a>
-      <a href="#"><i class="fab fa-facebook-f fa-2x"></i></a>
-      <a href="#"><i class="fab fa-instagram fa-2x"></i></a>
-    </div>
-
-
-    <!----------- NAVEGACION --------------------------------------------------->
-    <div>
-      <div class="row">
-        <div class="col">
-          <button class="btn btn-primary" (click)="verPerfil()">Perfil</button>
-        </div>
-        <div class="col">
-          <button class="btn btn-primary" (click)="verPortafolio()">Portafolio</button>
-        </div>
-        <div class="col">
-          <button class="btn btn-primary" (click)="verServicios()">Servicios</button>
+<div class="text-center">
+<img src="../../../assets/dist/img/artivo-logo.png" class="mb-3 rounded-circle" style="width: 150px;">
+<div class="card-body text-center">
+  <p class="card-title">{{ usuarioLoggeado.nombre }}</p>
+  <p class="card-text">{{ usuarioLoggeado.usuario }}</p>
+  <p class="card-text">{{ usuarioLoggeado.clave }}</p>
+</div>
+<div class="icon-container">
+  <a href="#"><i class="fab fa-linkedin fa-2x"aria-hidden="true"></i></a>
+  <a href="#"><i class="fab fa-facebook-f fa-2x"></i></a>
+  <a href="#"><i class="fab fa-instagram fa-2x"></i></a>
+</div>
+<!----------- NAVEGACION --------------------------------------------------->
+<div class="d-flex flex-column align-items-center">
+  <button class="btn btn-primary btn-block mb-2" (click)="mostrar(1)">
+      <mat-icon class="icon">settings</mat-icon>
+      <div>Configuraciones</div>
+  </button>
+  <button class="btn btn-primary btn-block mb-2" (click)="verPortafolio()">
+      <mat-icon class="icon">dashboard</mat-icon>
+      <div>Portafolios</div>
+  </button>
+  <button class="btn btn-primary btn-block mb-2" (click)="verServicios()">
+      <mat-icon class="icon">category</mat-icon>
+      <div>Servicios</div>
+  </button>
+  <button class="btn btn-primary btn-block mb-2" (click)="verSoporte()">
+      <mat-icon class="icon">help</mat-icon>
+      <div>Soporte</div>
+  </button> 
+</div>
+<span class="spancer"></span>
+<!----------- FIN NAVEGACION --------------------------------------------------->
+<div class="col-lg-10">
+      <div id="formulario" *ngIf="mostrarFormulario == true">
+        <h1>Información Básica</h1>
+        <div class="row">
+          <div class="col-lg-6 col-12">
+            <label for="usuario">Usuario</label>
+            <input type="email" id="usuario" class="form-control" [(ngModel)]="usuarioLoggeado.usuario" placeholder="Ingrese su correo" >
+            <span style="color: brown;" *ngIf="validausuario == false">Insertar usuario</span>
+          </div>
+          <div class="col-lg-6 col-12">
+            <label for="clave">Contraseña</label>
+            <input type="password" id="clave" class="form-control" [(ngModel)]="usuarioLoggeado.clave" placeholder="Ingrese su contraseña" >
+            <span style="color: brown;" *ngIf="validaclave == false">Insertar clave</span>
+          </div>
+          <div class="col-lg-6 col-12 align-items-center">
+            <label for="nombre">Nombre de Usuario</label>
+            <input type="text" id="nombre" class="form-control" [(ngModel)]="usuarioLoggeado.nombre" placeholder="Ingrese su nombre" >
+            <span style="color: brown;" *ngIf="validanombre == false">Insertar nombre</span>
+          </div>
+          <div class="col-lg-12">
+            <button *ngIf="beditar == false" class="btn btn-primary" (click)="ingresar()">Editar</button>
+            <button *ngIf="beditar == true" class="btn btn-primary" (click)="editar()">Editar</button>
+            <button class="btn btn-secondary" (click)="mostrar(0)">Cancelar</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
+   </div>
 
-<span class="spancer"></span>
 
-  
+

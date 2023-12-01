@@ -12,6 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { ImageCropperModule } from 'ngx-image-cropper';
 
 // LISTADO DE COMPONENTES /// 
 import { AppComponent } from './app.component';
@@ -31,6 +32,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { SalentComponent } from './modulos/proyecto/salent/salent.component';
 import { LoginComponent } from './modulos/login/login.component';
+import { RegistroComponent } from './modulos/registro/registro.component';
+import { GaleriaComponent } from './modulos/galeria/galeria.component';
 
 
 @NgModule({
@@ -49,6 +52,8 @@ import { LoginComponent } from './modulos/login/login.component';
     SuscripcionesComponent,
     SalentComponent,
     LoginComponent,
+    RegistroComponent,
+    GaleriaComponent,
 
   ],
   imports: [
@@ -70,10 +75,14 @@ import { LoginComponent } from './modulos/login/login.component';
     MatSelectModule,
     MatRadioModule,
     ReactiveFormsModule,
-   
+    ImageCropperModule,
+    
+    
+       
  
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

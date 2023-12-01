@@ -1,7 +1,6 @@
 import { NgModule, Component } from "@angular/core";
 import { RouterModule, Routes, CanActivate } from "@angular/router";
 import { DashboardComponent } from "./modulos/dashboard/dashboard.component";
-import { PruebaComponent } from "./modulos/prueba/prueba.component";
 import { UsuarioComponent } from "./modulos/usuario/usuario.component";
 import { SuscripcionesComponent } from "./modulos/suscripciones/suscripciones.component";
 import { LoginComponent } from "./modulos/login/login.component";
@@ -10,6 +9,7 @@ import { SoporteComponent } from "./modulos/soporte/soporte.component";
 import { PortafoliosComponent } from "./modulos/portafolios/portafolios.component";
 import { SalentComponent } from "./modulos/proyecto/salent/salent.component";
 import { ValidauserGuard } from "./guards/validauser.guard";
+import { GaleriaComponent } from "./modulos/galeria/galeria.component";
 
 const routes: Routes = [
   {
@@ -38,8 +38,8 @@ const routes: Routes = [
       },
 
       {
-        path: 'prueba',
-        component: PruebaComponent,
+        path: 'galeria',
+        component: GaleriaComponent,
       }, // modulo para pruebas de interfaz
 
       {
@@ -50,7 +50,7 @@ const routes: Routes = [
       { path: '', redirectTo: '/usuario', pathMatch: 'full'}
     ]
   },  
-   {path: 'login', component: LoginComponent},
+  { path: 'login', component: LoginComponent },
 ];
 
 @NgModule({

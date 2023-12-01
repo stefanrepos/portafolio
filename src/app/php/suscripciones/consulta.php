@@ -1,25 +1,35 @@
 <?php
 // Permite que cualquier dominio acceda a este recurso
-//The script first checks to see if the request is coming from a trusted domain. If it is, the script will allow the request to proceed. If it is not, the script will deny the request.//
+// El script primero verifica si la solicitud proviene de un dominio de confianza. 
+// Si es así, el script permitirá que la solicitud continúe. Si no, el script denegará la solicitud.
 
 header('Access-Control-Allow-Origin: *');       
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
 
-// contains the database connection information//
+// Contiene la información de conexión a la base de datos
 require("../conexion.php");
-//query to select all the users from the `usuarios` table. The results of the query are stored in a variable called `$res`//
-$con = "SELECT * FROM servicios ORDER BY nombre";
+
+// Consulta para seleccionar todos los campos de 3 tablas diferentes
+// Los resultados de la consulta se almacenan en una variable llamada `$res`
+$con = "SELECT s.*, m.nombrearea, n.moneda, n.sigla
+        FROM servicios s
+        INNER JOIN areas m ON s.FO_areas = m.id_areas
+        INNER JOIN monedas n ON s.FO_moneda = n.id_moneda
+        ORDER BY s.nombre";
+
 $res = mysqli_query($conexion, $con) or die('no consulta de suscripcion');
-//stores each row in an array called `$vec`//
+
+// Recorre los resultados de la consulta y los almacena en un vector
 $vec = [];
 while ($reg = mysqli_fetch_array($res))
 {
     $vec[] = $reg;
 }
 
-//then encodes the array as JSON and sends it back to the client
+// Codifica el vector como JSON y lo envía de vuelta al cliente
 $response =json_encode($vec);
 header('Content-Type:application/json');
+
+// La respuesta está en formato JSON.
 echo $response;
-//the response is in JSON format.
 ?>

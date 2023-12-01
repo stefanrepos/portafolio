@@ -1,7 +1,5 @@
-import { Component, inject } from '@angular/core';
+import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Observable } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-sidebar',
@@ -9,24 +7,11 @@ import { map, shareReplay } from 'rxjs/operators';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent {
-  private breakpointObserver = inject(BreakpointObserver);
+  isMobile: boolean = false; // Utilizamos un valor por defecto
 
-  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
-    .pipe(
-      map(result => result.matches),
-      shareReplay()
-  );
-  
-
-  isSubMenuOpen = false;
-
-  toggleSubMenu() {
-    this.isSubMenuOpen = !this.isSubMenuOpen;
+  constructor(private breakpointObserver: BreakpointObserver) {
+    this.breakpointObserver.observe([Breakpoints.Handset]).subscribe(result => {
+      this.isMobile = result.matches;
+    });
   }
-
-  
-
 }
-
-
-

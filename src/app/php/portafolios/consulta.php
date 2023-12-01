@@ -1,23 +1,26 @@
 <?php
 // Permite que cualquier dominio acceda a este recurso
-//The script first checks to see if the request is coming from a trusted domain. If it is, the script will allow the request to proceed. If it is not, the script will deny the request.//
 
 header('Access-Control-Allow-Origin: *');       
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
 
-// contains the database connection information//
+// **Contiene la información de conexión a la base de datos**
 require("../conexion.php");
-//query to select all the users from the `usuarios` table. The results of the query are stored in a variable called `$res`//
+
+// **Consulta para seleccionar todos los portafolios de la tabla `portafolio`**
 $con = "SELECT * FROM portafolio ORDER BY nombre";
 $res = mysqli_query($conexion, $con) or die('no consulta de canal');
-//stores each row in an array called `$vec`//
+
+// **Almacena cada fila en un array llamado `$vec`**
 $vec = [];
 while ($reg = mysqli_fetch_array($res))
 {
     $vec[] = $reg;
 }
-
+// **Codifica el array `$vec` en formato JSON**
 $cad =json_encode($vec);
+// **Establece el encabezado Content-Type para indicar que la respuesta está en formato JSON**
 header('Content-Type:application/json');
+// **Envía la respuesta JSON**
 echo $cad;
 ?>

@@ -5,6 +5,7 @@
   top: 0;
   width: 100%;
   z-index: 1000;
+  background: linear-gradient(to right, rgba(37, 117, 252, 1), rgba(106, 17, 203, 1))
 }
 
 .logo-link {
@@ -14,8 +15,9 @@
 }
 
 .logo {
-  height: 40px; /* Ajusta la altura del logotipo según tus necesidades */
-  margin-right: 20px; /* Agrega margen derecho para separar el logotipo de los elementos de navegación */
+  height: 60px; 
+  width: 60px;/* Ajusta la altura del logotipo según tus necesidades */
+  margin-right: 40px; /* Agrega margen derecho para separar el logotipo de los elementos de navegación */
 }
 .nav-list {
   display: flex; /* Utiliza flexbox para alinear elementos horizontalmente */
@@ -23,12 +25,15 @@
   margin-left: auto; /* Mueve la navegación al extremo derecho verticalmente (si es necesario) */
 }
 .icon-button {
-  margin-left: 10px; /* Espacio entre los botones de icono */
+  margin-left: 20px; /* Espacio entre los botones de icono */
+  align-items: center;
+  margin-right: 20px;
+
 }
 
 @media (max-width: 768px) {
   /* Oculta el logo en pantallas pequeñas */
   .logo {
-    display: true;
+    display: none; /* Cambia "true" a "none" para ocultar el logo */
   }
 }

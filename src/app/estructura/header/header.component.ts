@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-header',
@@ -11,6 +12,10 @@ export class HeaderComponent {
   showLogo: boolean = true;
 
   constructor(private router: Router) {}
+
+  scrollToTop() {
+    window.scrollTo(0, 0); // Desplaza la ventana al principio (top) de la página
+  }
 
   // Función para cerrar sesión
   logout() {
@@ -29,7 +34,7 @@ export class HeaderComponent {
   }
 
   goHome() {
-    this.router.navigate(['/dashboard'])
+    this.router.navigate(['/portafolios'])
   }
 
 

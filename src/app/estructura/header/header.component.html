@@ -1,17 +1,18 @@
-<mat-toolbar color="primary" class="fixed-header">
+<mat-toolbar  class="fixed-header">
   <!-- Logo a la izquierda -->
-  <img src="../../../assets/dist/img/as-log.png" class="logo">
- 
+  <a class="navbar-brand" href="#">
+   <img src="../../../assets/dist/img/as-log.png" width="40" height="40" alt="menu">
+ </a>
   
   <!-- Barra de navegación -->
   <mat-nav-list class="nav-list">
    </mat-nav-list>
-   <button mat-icon-button (click)="goHome()" class="icon-button">
-      <mat-icon>home</mat-icon>
+   <button mat-icon-button (click)="goHome()" class="icon-button" aria-label="Ir a Galeria">
+      <mat-icon>dashboard</mat-icon>
    </button>
      <!-- Icono de Configuración -->
   <button mat-icon-button (click)="openSettings()" class="icon-button">
-   <i class="fa fa-user-circle"></i>
+   <mat-icon>account_circle</mat-icon>
 </button>
   <!-- Icono de Cierre de Sesión -->
   <button mat-icon-button (click)="logout()" class="icon-button">

@@ -1,25 +1,27 @@
 <?php
 // Permite que cualquier dominio acceda a este recurso
-//The script first checks to see if the request is coming from a trusted domain. If it is, the script will allow the request to proceed. If it is not, the script will deny the request.//
+// El script primero verifica si la solicitud proviene de un dominio de confianza. 
+// Si es así, el script permitirá que la solicitud continúe. Si no, el script denegará la solicitud.
 
 header('Access-Control-Allow-Origin: *');       
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
 
-// contains the database connection information//
+// Contiene la información de conexión a la base de datos
 require("../conexion.php");
-//query to select all the users from the `usuarios` table. The results of the query are stored in a variable called `$res`//
+// Consulta para seleccionar todos los soportes de la tabla `soporte`
+// Los resultados de la consulta se almacenan en una variable llamada `$res`
 $con = "SELECT * FROM soporte ORDER BY categoria";
 $res = mysqli_query($conexion, $con) or die('no consulta de soporte');
-//stores each row in an array called `$vec`//
+// Almacena cada fila de la consulta en un vector llamado `$vec`
 $vec = [];
 while ($reg = mysqli_fetch_array($res))
 {
     $vec[] = $reg;
 }
 
-//then encodes the array as JSON and sends it back to the client
+// Codifica el vector como JSON y lo envía de vuelta al cliente
 $cad =json_encode($vec);
 echo $cad;
-//the response is in JSON format.
+// La respuesta está en formato JSON
 header('Content-Type:application/json');
 ?>

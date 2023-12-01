@@ -13,18 +13,20 @@ export class SoporteComponent implements OnInit {
   tsoportes: any;
   datos: any;
   idsoporte: any;
-
+  usuarioLoggeado: any;
   // Modelo NgModel Angular para capturar el array
   msoporte = {
-    contacto: "",
+    creador: "",
     categoria: "",
+    contacto: "",
     tipo: "",
+    comentario: "",
     estado: "activo",
-    plazo: "5",
-    prioridad: "",
+    plazo: "48",
+    prioridad: "Alta",
     asignacion: "SAT",
     fecha_creacion: "2023/10/10",
-    fecha_actualizacion: "",
+    fecha_actualizacion: "2023/10/30",
     fecha_cierre: "2023/10/15",
   };
 
@@ -37,8 +39,10 @@ export class SoporteComponent implements OnInit {
 
   constructor(private ssoporte: SoporteService) {} // asignar un nombre glogal al servicio usuario //
   ngOnInit(): void {
+    this.obtenerUsuarioLoggeado();
     this.consultaSoporte();
-    console.log("En este instante el componente ha cargado");
+    console.log("Consulta Soporte Esta cargada");
+    console.log("Usuario loggeado:", this.usuarioLoggeado);
   }
   //Funcionalidad del boton - mostrar el formulario recibe un dato , si es cero se oculta si es 1 no debe ocultarse//
   mostrar(dato: any) {
@@ -93,12 +97,9 @@ export class SoporteComponent implements OnInit {
   // acceder a la propiedad 'insertar del objeto PHP ssoporte 
   ingresar() {
     this.validar();
-
-    if (
-      this.validaContacto == true &&
-      this.validaCategoria == true &&
-      this.validaTipo == true
-    ) {
+{
+      // Asignar primero el creador como el nombre del usuario loggeado al campo creador
+      this.msoporte.creador = this.usuarioLoggeado.usuario;
       this.ssoporte.insertar(this.msoporte).subscribe((datos: any) => {
         if (datos["resultado"] == "OK") {
           console.log("Datos insertados");
@@ -171,7 +172,16 @@ export class SoporteComponent implements OnInit {
   }
 
 
-
+  obtenerUsuarioLoggeado() {
+    // Obtiene los datos del usuario loggeado desde el almacenamiento local (sessionStorage)
+    this.usuarioLoggeado = {
+      id: sessionStorage.getItem('id'),
+      nombre: sessionStorage.getItem('nombre'),
+      usuario: sessionStorage.getItem('usuario'),
+      tipo: sessionStorage.getItem('tipo')
+      };
+      console.log(this.usuarioLoggeado);
+  }
 
 
 

@@ -1,0 +1,40 @@
+<section class="vh-100 gradient-custom">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+          <div class="card bg-light text-white" style="border-radius: 1rem;">
+            <div class="card-body p-5 text-center">
+              <div class="col-lg-10">
+            
+
+          <div class="d-flex flex-column align-items-center justify-content-center">
+            <img class="mb-4" src="../../../assets/dist/img/as-log.png" alt="" width="100" height="100">
+            <h1 class="h3 mb-3 fw-normal" style="color: black;">Crear Cuenta</h1>
+          </div>
+          <div id="formulario" *ngIf="mostrarFormulario == true">
+        
+
+            <div>
+              <input type="text" class="form-control" id="floatingInput" placeholder="Ingrese Email" [(ngModel)]="usuario.nombre">
+              <label for="floatingInput">Nombre de usuario</label>
+            </div>
+          <div>
+            <input type="email" class="form-control" id="floatingInput" placeholder="Ingrese Email" [(ngModel)]="usuario.usuario">
+            <label for="floatingInput">Correo Electrónico</label>
+          </div>
+        
+          <div>
+            <input type="password" class="form-control" id="floatingPassword" placeholder="Contraseña" [(ngModel)]="usuario.clave">
+            <label for="floatingPassword">Contraseña</label>
+<!--             <span *ngIf="error==true" style="color: red;">Email o Contraseña incorrecta</span>
+ -->        </div>
+
+        
+          
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>

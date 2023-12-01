@@ -1,23 +1,43 @@
-<button class="btn btn-primary" (click)="mostrar(1)">Agregar portafolio</button><br><br> 
-<br>
-<div class="container" id="formulario" *ngIf="verf == true">
+   <div class="button-container">
+   <button class="btn btn-primary" (click)="mostrar(1)">Agregar portafolio
+      <mat-icon>library_add</mat-icon>
+   </button>
+   <button class="btn btn-primary" (click)="mostrarPortafolios()">Ver portafolios
+      <mat-icon>dashboard</mat-icon>
+   </button>
+   <button class="btn btn-primary"  (click)="mostrarMisPortafolios()">Mis Portafolios
+      <mat-icon>favorite</mat-icon>
+   </button>
+   </div>
+   <br>
+   <br>
+<div class="container">
+   <div class="col-lg-12 align-items-center"  id="formulario" *ngIf="verf == true">
    <div class="row">
-      <div class="col-lg-6 align-items-center">
+      <div class="col-lg-4">
+         <label for="nombre" class="form-label label-header">Nombre del portafolio</label>
          <input type="text" id="nombre" class="form-control" [(ngModel)]="uportafolio.nombre" placeholder="Nombre de portafolio ">
          <span style="color: brown;" *ngIf="validanombre == false">Nombre</span>
       </div>
-      <div class="col-lg-6">
-         <select id="descripcion" class="form-select" [(ngModel)]="uportafolio.descripcion" placeholder="seleccione">
-            <option value="Artes y patrimonio" label="Artes y patrimonio">Artes y patrimonio</option>
-            <option value="Industria Cultural" label="Industria Cultural">Industria Cultural</option>
-            <option value="Creacion Funcional" label="Creacion Funcional">Empresas</option>
-            </select>     
-   
+      <div class="col-lg-4">
+         <label for="descripcion" class="form-label label-header">Describe tu portafolio</label>
+         <input id="descripcion" class="form-control" [(ngModel)]="uportafolio.descripcion" placeholder="maximo 15 palabras">
          <span style="color: brown;" *ngIf="validadescripcion == false">Insertar descripcion</span>
       </div>
 
-      <div class="col-lg-6">
-         <select id="tipo" class="form-select" [(ngModel)]="uportafolio.tipo" placeholder="seleccione">
+   <!-- <div class="col-lg-4">
+         <label class="label-header" for="FO_areas">Areas</label>
+         <select id="FO_areas" class=" form-control form-select" [(ngModel)]="uportafolio.FO_areas">
+         <option value="0" label="Seleccionar area">Seleccione el area</option>
+         <option *ngFor="let itema of area"  value="{{itema.id_areas}}" label="{{itema.nombrearea}}">{{itema.nombrearea}}</option>
+         </select>     
+         <span style="color: brown;" *ngIf="validaFO_areas== false">Insertar tipo</span>
+      </div>
+   -->
+
+      <div class="col-lg-4">
+         <label for="propietario" class="form-label label-header">Tipo</label>
+         <select id="propietarios" class="form-control" [(ngModel)]="uportafolio.tipo" placeholder="seleccione">
          <option value="Profesional" label="Profesional">Profesional</option>
          <option value="Organizaciones" label="Organizaciones">Organizaciones</option>
          <option value="Empresas" label="Empresas">Empresas</option>
@@ -26,40 +46,53 @@
 
          <span style="color: brown;" *ngIf="validatipo == false">Insertar tipo</span>
       </div>
-      <div class="col-lg-6">
 
-         <select id="estado" class="form-select" [(ngModel)]="uportafolio.estado" placeholder="seleccione">
-         <option value="Activar" label="Activar">activo</option>
-         <option value="Desactivar" label="Desactivar">inactivo</option>
-         </select>
+      <!--<div class="col-lg-6 col-12">
+         <label for="nombre">Usuario</label>
+         <input type="email" id="usuario" class="form-control" [(ngModel)]="usuarioLoggeado.usuario" placeholder="Ingrese su correo" >
+         <span style="color: brown;" *ngIf="validausuario == false">Insertar usuario</span>
+         </div> -->
 
-         <span style="color: brown;" *ngIf="validatipo == false">Insertar tipo</span>
-      </div>
+         <div class="col-lg-4">
+
+         <input type="text" id="creador"  class="form-control" [(ngModel)]="usuarioLoggeado.nombre" placeholder="Creador del portafolio"> 
+      
+         </div>
+
       <div class="col-lg-12">
          <button *ngIf="beditar == false" class="btn btn-primary" (click)="ingresar()">Guardar</button>
          <button *ngIf="beditar == true" class="btn btn-primary" (click)="editar()">Editar</button>
          <button class="btn btn-secondary" (click)="mostrar(0)">Cancelar</button>
       </div>
    </div>
-</div>
-<br> 
-
-
-<div class="container card">
-   <div class="row">
-     <div class="col-md-4 col-sm-6 col-12" *ngFor="let item of portafolio">
-       <div class="card mb-3">
-         <div class="card-body">
-           <h5 class="card-title">{{ item.nombre }}</h5>
-           <p class="card-text">Creador: {{ item.creador }}</p>
-           <p class="card-text">Descripción: {{ item.descripcion }}</p>
-           <p class="card-text">Tipo: {{ item.tipo }}</p>
-           <p class="card-text">Estado: {{ item.estado }}</p>
-           <a (click)="cargarDatos(item, item.id_portafolio)" class="btn btn-primary">Editar</a>
-           <a (click)="preguntar(item.id_portafolio, item.nombre)" class="btn btn-danger">Eliminar</a>
-         </div>
-       </div>
-     </div>
    </div>
- </div>
- 
+
+</div>
+   <br> 
+
+   <!-- --------------------campos de card --------------------------------------------------- -->
+   <div class="container mt-5 text-center d-flex align-items-center">
+   <div class="row">
+         <div *ngFor="let item of portafolio" class="col-md-6 col-lg-3 mb-4 col-12">
+            <div class="card mb-3">
+                  <img src="../../../assets/dist/img/Cuadro_gris.png" class="card-img-top" alt="...">
+               <div class="card-body">
+                  <h3 class="card-text">{{ item.nombre }}</h3>
+                  <p class="card-text">{{ item.descripcion }}</p>
+                  <p class="card-text">{{ item.creador }}</p>
+                  <a href="#" class="btn btn-outline-info"><i class="fas fa-comment-dots"></i></a>
+                  <div class="btn">
+                  <a (click)="cargarDatos(item, item.id_portafolio)" *ngIf="item.creador === usuarioLoggeado.nombre">
+                  <span class="fas fa-edit fa-2x editar" title="editar"></span>
+                  </a>
+                  <a (click)="preguntar(item.id_portafolio, item.nombre)" *ngIf="item.creador === usuarioLoggeado.nombre">
+                     <span class="fas fa-eraser fa-2x eliminar" title="eliminar"></span>
+                  </a>
+               </div>
+            </div>
+         </div>
+   </div>
+   </div>
+
+   <!-- --------------------campos de card --------------------------------------------------- -->
+

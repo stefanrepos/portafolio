@@ -1,15 +1,4 @@
-.container{
-    display:flex;
-    flex-direction:row;
-    flex-wrap:wrap;
-    justify-content:flex-start;
-    align-items:unset;
-    align-content:flex-start;
-    height:100vh; /*Este valor lo puedes omitir si la altura de tu componente esta definida*/
-    background-color: whitesmoke;
-    margin-left: 0%; 
-  }
-  
+
   .icon-button {
       margin-left: 50px; /* Espacio entre los botones de icono */
       font-size: 40px; /* Tamaño del icono */
@@ -22,6 +11,21 @@
     margin: 10px;
 
 }
+
+/*CONTENDOR DE LOS BOTONES */
+
+.button-container {
+  border: 1px solid #ccc; /* Borde con color gris */
+  border-radius: 10px; /* Bordes suavizados */
+  text-align: center; /* Centro del contenido */
+  padding: 10px; /* Espacio interno */
+  display: flex;
+  justify-content: center; /* Centrado horizontal */
+  align-items: center; /* Centrado vertical */
+  flex-wrap: wrap; /* Asegura que los botones se envuelvan en múltiples líneas si es necesario */
+}
+
+
 
   /*Estilos Generales*/
   
@@ -48,9 +52,11 @@
   
   #formulario {
       background-color: #f7f7f7; /* Color de fondo suave */
-      padding: 20px; /* Espaciado interno */
+      padding: 10px; /* Espaciado interno */
       border: 1px solid #ccc; /* Borde del formulario */
-      border-radius: 5px; /* Bordes redondeados */
+      border-radius: 15px; /* Bordes redondeados */
+      height: auto;
+
     }
     
     .form-control {
@@ -63,6 +69,9 @@
       border: none; /* Sin borde */
       border-radius: 5px; /* Bordes redondeados en el botón */
       color: #fff; /* Texto en color blanco */
+      margin-left: 10px;
+      font-size: 16px; /* Tamaño de fuente */
+   
     }
     
     .btn-secondary {
@@ -77,9 +86,9 @@
     }
     
 
-    //ESTILOS PARA LA TABLA - TIPO ADATPATIVE 
+    //ESTILOS PARA LA TABLA - TIPO ADAPTATIVE 
 
-    /* Estilo para dispositivos móviles */
+/* Estilo para dispositivos móviles */
 /* Estilo para dispositivos móviles */
 @media (max-width: 767px) {
   .table-responsive {
@@ -133,4 +142,45 @@
       display: none;
       padding: 10px;
   }
+}
+
+
+/******************CARD****/
+
+.card{
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 80%;
+
+  }
+
+  .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+
+  .card-text{
+    color: black;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+  }
+
+
+  .card-details {
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.card-name{
+  font-size: 12px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+
+.card-category, .card-price, .card-duration, .card-sigla , .card-description{
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 5px;
 }

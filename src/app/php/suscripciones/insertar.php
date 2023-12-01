@@ -3,38 +3,63 @@ header('Access-Control-Allow-Origin: *');
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
 $json   = file_get_contents('php://input');
 $params = json_decode($json);
-
-// Check if $params is not null
+// Los datos JSON se decodificaron correctamente, continúa con tu consulta SQL
 require("../conexion.php");
 
 $ins = "INSERT INTO servicios (
         nombre, 
         descripcion, 
-        categoria, 
+        FO_areas, 
         precio, 
-        moneda, 
+        FO_moneda, 
         duracion, 
         Imagen, 
-        destacado, 
+        contacto, 
         disponibilidad, 
         requisitos, 
-        fechaPuplic) 
+        fechaPuplic,
+        creador) 
     VALUES ('$params->nombre',
     '$params->descripcion', 
-    '$params->categoria',
+     $params->FO_areas,
     '$params->precio', 
-    '$params->moneda', 
+     $params->FO_moneda, 
     '$params->duracion', 
     '$params->Imagen', 
-    '$params->destacado', 
+    '$params->contacto', 
     '$params->disponibilidad', 
     '$params->requisitos',
-    '$params->fechaPuplic')";
+    '$params->fechaPuplic',
+    '$params->creador')"; 
+/* 
+    $ins = "INSERT INTO servicios (
+        nombre, 
+        descripcion, 
+        FO_areas, 
+        precio, 
+        FO_moneda, 
+        duracion, 
+        Imagen, 
+        contacto, 
+        disponibilidad, 
+        requisitos, 
+        fechaPuplic,
+        creador) 
+    VALUES ('ConsultaStefan',
+    '$params->Consultas Desarrollo', 
+     '5',
+    '25000', 
+     '1', 
+    ' 4 horas', 
+    '0', 
+    '3132537654', 
+    'si', 
+    'si',
+    '2023-10-29',
+    'Superuser')"; */
 
 mysqli_query($conexion, $ins) or die('no inserto');
-
 $mensaje = "se guardo correctamente ";
-
 class Result
 {
     public $resultado;

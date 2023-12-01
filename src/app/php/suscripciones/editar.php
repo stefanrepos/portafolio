@@ -11,17 +11,19 @@ $params = json_decode($json);
 // incluir el contenido de "conexion.php"  con las configuraciones de conexión a la base de datos, 
 require("../conexion.php");
 //campos a editar
-$editar = "UPDATE servicios SET nombre = '$params->nombre',
-'$params->descripcion', 
-'$params->categoria',
-'$params->precio', 
-'$params->moneda', 
-'$params->duracion', 
-'$params->Imagen', 
-'$params->destacado', 
-'$params->disponibilidad', 
-'$params->requisitos')
-
+$editar = "UPDATE servicios 
+SET nombre = '$params->nombre',
+    descripcion = '$params->descripcion', 
+    FO_areas = $params->FO_areas,
+    precio ='$params->precio', 
+    FO_moneda = $params->FO_moneda, 
+    duracion = '$params->duracion', 
+    Imagen = '$params->Imagen', 
+    contacto = '$params->contacto', 
+    disponibilidad = '$params->disponibilidad', 
+    requisitos = '$params->requisitos',
+    fechaPuplic = '$params->fechaPuplic',
+    creador = '$params->creador'
 WHERE id_servicio=$id";
 
 mysqli_query($conexion, $editar) or die("no se edito ningun registro");

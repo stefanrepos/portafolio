@@ -13,29 +13,38 @@ export class PortafoliosComponent implements OnInit {
   portafolio: any;
   datos: any;
   idportafolio: any;
+  usuarioLoggeado: any; // Variable para almacenar los datos del usuario loggeado
+  mostrarPortafolio: boolean = false;
+
 
   // crear el modelo en angular ngModel para luego ser referenciado cada variable en los imput del form //
   uportafolio = {
+    creador: "",
     nombre: "",
     descripcion: "",
     tipo: "",
+    FO_areas: 18,
     estado: "",
+    fecha_creacion: "",
+    FO_canales: 1,
   };
   // variables para la validacion //
 
   validanombre = true;
   validadescripcion = true;
   validatipo = true;
-  validaestado = true;
+  validacreador= true;
   beditar = false;
 
   constructor(private sportafolio: PortafoliosService) {} // asignar un nombre glogal al servicio usuario //
 
   ngOnInit(): void {
+    this.obtenerUsuarioLoggeado();
     this.consulta();
     this.limpiar();
+    console.log("Usuario loggeado:", this.usuarioLoggeado);
+    console.log("En este instante el componente ha cargado", this.usuarioLoggeado);
 
-    console.log("En este instante el componente ha cargado");
   }
 
   // 1. Funcionalidad del boton - mostrar el formulario recibe un dato//
@@ -56,11 +65,28 @@ export class PortafoliosComponent implements OnInit {
     }
   }
 
+
+  mostrarMisPortafolios() {
+    this.mostrarPortafolio = true;
+    this.verf = false; // Oculta el formulario al mostrar la tabla
+    this.beditar = false;
+    this.portafolio = this.portafolio.filter((portafolio: any) => portafolio.creador === this.usuarioLoggeado.nombre);
+
+  }
+  
+  mostrarPortafolios() {
+    this.sportafolio.consultar().subscribe((portafolios: any) => {
+      // Almacena los portafolios en tu variable uportafolio
+      this.portafolio = portafolios;
+    });
+
+  }
+
   limpiar() {
     this.uportafolio.nombre = "";
     this.uportafolio.descripcion = "";
     this.uportafolio.tipo = "";
-    this.uportafolio.estado = "";
+    this.uportafolio.creador = "";
   }
   // 2. Funcionalidad de la base de datos desde el servicio USER //
   consulta() {
@@ -68,7 +94,7 @@ export class PortafoliosComponent implements OnInit {
       // subscribe  para cargar en tiempo real
       this.portafolio = result;
       console.log(this.portafolio); //
-      console.log("Se ha cargado el ARRAY portafolio correctamente");
+      console.log("Se ha cargado el ARRAY portafolio correctamente", this.usuarioLoggeado);
     });
   }
 
@@ -92,10 +118,10 @@ export class PortafoliosComponent implements OnInit {
       this.validatipo = true;
     }
 
-    if (this.uportafolio.estado == "") {
-      this.validaestado = false;
+    if (this.uportafolio.creador == "") {
+      this.validacreador= false;
     } else {
-      this.validaestado = true;
+      this.validacreador = true;
     }
   }
 
@@ -107,9 +133,12 @@ export class PortafoliosComponent implements OnInit {
     if (
       this.validanombre == true &&
       this.validadescripcion == true &&
-      this.validatipo == true &&
-      this.validaestado == true
+      this.validatipo == true
+    
     ) {
+      // Asignar primero el creador como el nombre del usuario loggeado al campo creador
+      this.uportafolio.creador = this.usuarioLoggeado.nombre;
+      
       this.sportafolio.insertar(this.uportafolio).subscribe((datos: any) => {
         if (datos["resultado"] == "OK") {
           console.log("Datos insertados");
@@ -153,14 +182,21 @@ export class PortafoliosComponent implements OnInit {
   }
 
   cargarDatos(datos: any, id: number) {
+    if (datos.creador === this.usuarioLoggeado.nombre){
     console.log(datos);
     this.uportafolio.nombre = datos.nombre;
-    this.uportafolio.descripcion = datos.usuario;
-    this.uportafolio.tipo = datos.clave;
-    this.uportafolio.estado = datos.tipo;
+    this.uportafolio.descripcion = datos.descripcion;
+    this.uportafolio.tipo = datos.tipo;
+    this.uportafolio.creador = datos.creador;
     this.idportafolio = id;
     this.mostrar(1);
     this.beditar = true;
+  } else {
+    // Mostrar un mensaje si el usuario no es el creador del servicio
+    Swal.fire("No tienes permiso para editar este servicio.");
+  }
+
+
   }
 
   editar() {
@@ -169,12 +205,12 @@ export class PortafoliosComponent implements OnInit {
     if (
       this.validanombre == true &&
       this.validadescripcion == true &&
-      this.validatipo == true &&
-      this.validaestado
+      this.validatipo == true 
+
     ) {
-      this.sportafolio
-        .edit(this.uportafolio, this.idportafolio)
-        .subscribe((datos: any) => {
+
+      this.uportafolio.creador = this.usuarioLoggeado.nombre;
+      this.sportafolio.edit(this.uportafolio, this.idportafolio).subscribe((datos: any) => {
           if (datos["resultado"] == "OK") {
             console.log("Datos insertados");
             console.log(this.portafolio);
@@ -185,4 +221,20 @@ export class PortafoliosComponent implements OnInit {
       this.mostrar(0);
     }
   }
+
+
+
+/* ///////////////////////LOGGIN //////////// */
+
+obtenerUsuarioLoggeado() {
+  // Obtiene los datos del usuario loggeado desde el almacenamiento local (sessionStorage)
+  this.usuarioLoggeado = {
+    id: sessionStorage.getItem('id'),
+    nombre: sessionStorage.getItem('nombre'),
+    usuario: sessionStorage.getItem('usuario'),
+    tipo: sessionStorage.getItem('tipo')
+    };
+    console.log(this.usuarioLoggeado);
+}
+  
 }

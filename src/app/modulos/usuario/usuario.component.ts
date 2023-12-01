@@ -7,21 +7,15 @@ import { Router } from '@angular/router';
   templateUrl: './usuario.component.html',
   styleUrls: ['./usuario.component.scss']
 })
-  
-// 1. // 
-  
+ 
 export class UsuarioComponent implements OnInit {
-  
-  // CREAR UNAS VARIABLES GLOBALES //
+   // CREAR UNAS VARIABLES GLOBALES //
   mostrarFormulario = false;
   usuario: any;
   datos: any;
   iduser: any;
   usuarioLoggeado: any; // Variable para almacenar los datos del usuario loggeado
-  usuariosFiltrados: any[] = []; // Arreglo para almacenar los usuarios filtrados
-
-  usuarios: any[] = [];
-  // crear el modelo en angular ngModel para luego ser referenciado cada variable en los imput del form // 
+ // crear el modelo en angular ngModel para luego ser referenciado cada variable en los imput del form // 
   user = {
     nombre: "",
     usuario: "",
@@ -29,22 +23,21 @@ export class UsuarioComponent implements OnInit {
     tipo: ""
   };
   // variables para la validacion // 
-
   validanombre = true;
   validausuario = true;
   validaclave = true;
   validatipo = true;
   beditar = false;
 
-
-
   constructor(private suser: UsuarioService, private router: Router) { } // asignar un nombre glogal al servicio usuario //
-      
+     
   ngOnInit(): void {
   this.obtenerUsuarioLoggeado();
+  this.consulta();
   this.limpiar();
   this.usuario = this.usuarioLoggeado;
-  console.log("En este instante el componente ha cargado");
+    console.log("En este instante el componente ha cargado");
+    console.log(this.usuarioLoggeado);
   }
 
   // 1. Funcionalidad del boton - mostrar el formulario recibe un dato//
@@ -83,11 +76,6 @@ export class UsuarioComponent implements OnInit {
       
   }
 
-  consultaUsuarios() {
-    this.suser.consultar().subscribe((result: any) => {
-      this.usuarios = result;
-    });
-  }
 
 
   // 3. validar antes de ingresar dato 
@@ -123,8 +111,12 @@ export class UsuarioComponent implements OnInit {
   ingresar() {
     this.validar();
 
-    if (this.validanombre == true && this.validausuario == true && this.validaclave == true && this.validatipo) {
-      
+    if (this.validanombre == true &&
+      this.validausuario == true &&
+      this.validaclave == true    
+     
+      ) {
+      this.user.nombre = this.usuarioLoggeado.nombre;
       this.suser.insertar(this.user).subscribe((datos: any) => {
         if (datos['resultado'] == 'OK') {
           console.log('Datos insertados');
@@ -164,18 +156,22 @@ export class UsuarioComponent implements OnInit {
   }
   
   borrarusuario(id: any) {
-    console.log(id);
-    this.suser.eliminar(id).subscribe((datos: any) => {
-      if (datos['resultado'] == 'OK') {
-        this.consulta();
-      }
-    
-    });
-  
+    if (id === this.usuarioLoggeado.id_usuario) {
+      console.log(id);
+      this.suser.eliminar(id).subscribe((datos: any) => {
+        if (datos['resultado'] == 'OK') {
+          this.consulta();
+        }
+      });
+    }
+    else {
+      // Mostrar un mensaje si el usuario no es el creador del servicio
+      Swal.fire("No tienes permiso para editar este servicio.");
+    }
   }
 
   cargarDatos(datos: any, id: number) {
-    console.log(datos);
+    if (datos.nombre === this.usuarioLoggeado.nombre) {
     this.user.nombre = datos.nombre;
     this.user.usuario = datos.usuario;
     this.user.clave = datos.clave;
@@ -183,14 +179,21 @@ export class UsuarioComponent implements OnInit {
     this.iduser = id;
     this.mostrar(1);
     this.beditar = true;
-
+  } else {
+    // Mostrar un mensaje si el usuario no es el creador del servicio
+    Swal.fire("No tienes permiso para editar este servicio.");
+  }
   }
 
   editar() {
     this.validar();
 
-    if (this.validanombre == true && this.validausuario == true && this.validaclave == true && this.validatipo) {
-      
+    if (
+      this.validanombre == true &&
+      this.validausuario == true &&
+      this.validaclave == true
+    ){
+      this.user.usuario = this.usuarioLoggeado.nombre;
       this.suser.edit(this.user, this.iduser).subscribe((datos: any) => {
         if (datos['resultado'] == 'OK') {
           console.log('Datos insertados');
@@ -216,8 +219,8 @@ export class UsuarioComponent implements OnInit {
     this.router.navigate(['/suscripciones'])
   }
   
-  verPerfil() {
-    this.router.navigate(['/prueba'])
+  verSoporte() {
+    this.router.navigate(['/soporte'])
   }
   
 
@@ -228,7 +231,7 @@ export class UsuarioComponent implements OnInit {
     this.usuarioLoggeado = {
       id: sessionStorage.getItem('id'),
       nombre: sessionStorage.getItem('nombre'),
-      usuario: sessionStorage.getItem('usuario'),
+      usuario: sessionStorage.getItem('usuario'), /* correo electronico */
       tipo: sessionStorage.getItem('tipo')
     
     };
@@ -236,12 +239,7 @@ export class UsuarioComponent implements OnInit {
     console.log(this.usuarioLoggeado);
 
   }
-/**FUNCIOANLIDAD PARA FILTRAR  */
-filtrarUsuarios() {
-  this.usuariosFiltrados = this.usuarios.filter((usuario) => {
-    return usuario.usuario === this.usuarioLoggeado.usuario;
-  });
-}
+
 
 }
 

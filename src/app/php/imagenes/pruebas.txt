@@ -1,0 +1,79 @@
+<?php
+// cabeceras para acceder a los recursos 
+header('Access-Control-Allow-Origin: *');
+header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+
+$json   = file_get_contents('php://input');
+$params = json_decode($json);
+
+// Conexión a la base de datos
+require("../conexion.php");
+
+// Comprobación de que la imagen se ha subido correctamente
+if ($_FILES["image"]["error"] != UPLOAD_ERR_OK) {
+  echo "Error al subir la imagen.";
+  exit;
+}
+
+// Comprobación de que el archivo subido es una imagen
+$tipo = $_FILES["image"]["type"];
+if (!exif_imagetype($tipo)) {
+  echo "El archivo subido no es una imagen.";
+  exit;
+}
+
+// Obtención de los datos de la imagen
+$nombre = $_POST["nombre"];
+$descripcion = $_POST["descripcion"];
+$ruta = $_POST["ruta"];
+$propietario = $_POST["propietario"];
+$type = $_FILES["image"]["type"];
+$content = file_get_contents($_FILES["image"]["tmp_name"]);
+
+// Generación de un nombre aleatorio para la imagen
+$nombre_archivo = uniqid() . ".jpg";
+
+// Guardado de la imagen en el servidor
+$carpeta = $_SERVER['DOCUMENT_ROOT'] . "/ruta/a/la/carpeta";
+
+move_uploaded_file($_FILES["image"]["tmp_name"], $carpeta . "/" . $nombre_archivo);
+
+// Guardado de la imagen en la base de datos
+$sql = "INSERT INTO imagenes (
+    nombre,
+    descripcion, 
+    ruta, 
+    propietario, 
+    tipo, 
+    contenido)
+ VALUES (
+    '$params->$nombre', 
+    '$params->$descripcion',
+    '$carpeta/$nombre_archivo', 
+    '$params->$propietario', 
+    '$params->$type', 
+    'data:image/png;base64,$content')";
+
+// Preparamos la consulta
+$stmt = mysqli_prepare($conexion, $sql);
+
+// Ejecutamos la consulta
+$result = mysqli_stmt_execute($stmt);
+
+// Comprobación de la operación
+if ($result) {
+    // Si la operación fue exitosa, devolvemos un mensaje de éxito
+    $response            = new Result();
+    $response->resultado = 'OK';
+    $response->mensaje   = 'datos grabados';
+    header('Content-Type:application/json');
+    echo json_encode($response);
+  } else {
+    // Si la operación no fue exitosa, devolvemos un mensaje de error
+    $response            = new Result();
+    $response->resultado = 'ERROR';
+    $response->mensaje   = 'Error al guardar la imagen.';
+    header('Content-Type:application/json');
+    echo json_encode($response);
+  }
+?>

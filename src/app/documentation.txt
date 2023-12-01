@@ -1,0 +1,80 @@
+este texto es para escribir errores 
+
+Pruebas
+---------------------------------
+
+conexion: solucionado - comentar el echo porque aunque sirve para comprobar conexion en pantalla,  
+cuando los componentes intentan inyectar datos a la bd no los conecta
+-----------------
+
+<?php
+// configurar el xaamp
+
+$servidor = "localhost";
+$usuario  = "root";
+$clave = "";
+$bd = "bkeaportafolio"; // base de datos 
+
+// Crear una conexión
+$conexion = new mysqli($servidor, $usuario, $clave, $bd);
+
+// Verificar la conexión
+if ($conexion->connect_error) {
+    die("Conexión fallida: " . $conexion->connect_error);}
+    //else { echo "Conexión exitosa";
+//}
+?>
+
+
+------------------inyeccion de datos a la BD---------------
+
+Insertar datos: solucionado
+---------------------------------
+ERROR 
+Object { headers: {…}, status: 200, statusText: "OK", url: "http://localhost/portafolio/src/app/php/portafolios/insertar.php", ok: false, name: "HttpErrorResponse", message: "Http failure during parsing for http://localhost/portafolio/src/app/php/portafolios/insertar.php", error: {…} }
+​
+error: Object { error: SyntaxError, text: "<br />\n<b>Fatal error</b>:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '', 'Activar')' at line 1 in C:\\xampp\\htdocs\\portafolio\\src\\app\\php\\portafolios\\insertar.php:12\nStack trace:\n#0 C:\\xampp\\htdocs\\portafolio\\src\\app\\php\\portafolios\\insertar.php(12): mysqli_query(Object(mysqli), 'INSERT INTO por...')\n#1 {main}\n  thrown in <b>C:\\xampp\\htdocs\\portafolio\\src\\app\\php\\portafolios\\insertar.php</b> on line <b>12</b><br />\n" }
+​
+headers: Object { normalizedNames: Map(0), lazyUpdate: null, lazyInit: lazyInit()
+ }
+​
+message: "Http failure during parsing for http://localhost/portafolio/src/app/php/portafolios/insertar.php"
+​
+name: "HttpErrorResponse"
+​
+ok: false
+​
+status: 200
+​
+statusText: "OK"
+​
+url: "http://localhost/portafolio/src/app/php/portafolios/insertar.php"
+​
+<prototype>: Object { … }
+core.mjs:10920:22
+
+​---------------------------------------
+ solucion los datos de entrada no estan en formato json
+el error se encuentra en el archivo php en la sentencia '$params->variable'
+este debe ir encerrado entre comillas simples 
+
+--------------------------------------------------
+
+LLaves foraneas 
+este error frecuentemente porque la base ya se encuentra con datos
+ahora vamos a pasar a trasponer estas opciones a distintas tablas secundaruas 
+
+se comprueba a traves de isnertar en php my adminla ta tablas
+verificar que el indice este creado
+verificar que la tabla este vacia
+antes de llamar al Diseñador y crear la relacion 
+asegurarse que el campo este vacio, el indice creado, y la tabla secundaria con indice y numeracion de la caracteristica
+realizar este mismo evento para todos los forumalrios que requieran opciones
+esta separacion tambien permitira la integridad de los datos
+
+tambien para las clves secundarias se dejo On Delete Null  y Update Cascade para que se actualice pero no se elimine 
+habran datos null 
+revisar mas adelante como se hara esta imputaicion
+Error: ¡no se pudo crear la clave ajena!
+#1452 - Cannot add or update a child row: a foreign key constraint fails 
+`bkeaportafolio`.`#sql-412c_1302`, CONSTRAINT `#sql-412c_1302_ibfk_1` FOREIGN KEY (`id_areas`) REFERENCES `portafolio` (`FO_areas`)
